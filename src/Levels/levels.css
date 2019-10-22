@@ -1,0 +1,31 @@
+
+
+.map_level {
+
+    border: 1px solid red;
+    width: 768px;
+    height: 768px;
+    display: table;
+    margin: 0 auto;
+}
+
+.map_row {
+
+
+}
+
+.outerspace_tile {
+
+    position: relative;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+
+    background-repeat:no-repeat;
+    background-size:cover;
+    
+}
+
+.sprite {
+    
+}
