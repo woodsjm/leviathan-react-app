@@ -10,7 +10,7 @@ class Character extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tile: {x: 1, y: 12},
+            tile: {x: 0, y: 0},
             position: {top: `${top}px`, left: `${left}px`}
         }
         this.handleArrowKeys = this.handleArrowKeys.bind(this)
@@ -33,7 +33,11 @@ class Character extends React.Component {
         const y = this.state.tile.y
 
         if (direction === 'ArrowRight') {
-            if ((this.props.check(x + 1, y) === '*' || '&') && x + 1 < 13) {
+
+            console.log(this.props.check(x + 1, y))
+
+            if ((this.props.check(x + 1, y) === true) && (x + 1 < 12)) {
+                console.log("Inside ArrowRight")
                 left += 64
                 const position = {...this.state.position}
                 position.left = `${left}px`
@@ -45,7 +49,7 @@ class Character extends React.Component {
             }
 
         } else if (direction === 'ArrowLeft') {
-            if ((this.props.check(x - 1, y) === '*' || '&') && x - 1 > 0) {
+            if ((this.props.check(x - 1, y) === true) && (x - 1 >= 0)) {
                 left -= 64
                 const position = {...this.state.position}
                 position.left = `${left}px`
@@ -57,25 +61,26 @@ class Character extends React.Component {
             }
             
         } else if (direction === 'ArrowDown') {
-            if ((this.props.check(x, y - 1) === '*' || '&') && y - 1 > 0) {
+            
+            if ((this.props.check(x, y + 1) === true) && (y + 1 < 12)) {
                 top += 64
                 const position = {...this.state.position}
                 position.top = `${top}px`
 
                 this.setState({
-                    tile: {x: x, y: y - 1},
+                    tile: {x: x, y: y + 1},
                     position: {...position}
                 }) 
             }
 
         } else if (direction === 'ArrowUp') {
-            if ((this.props.check(x, y + 1) === '*' || '&') && y + 1 < 13) {
+            if ((this.props.check(x, y - 1) === true) && (y - 1 >= 0)) {
                 top -= 64
                 const position = {...this.state.position}
                 position.top = `${top}px`
 
                 this.setState({
-                    tile: {x: x, y: y + 1},
+                    tile: {x: x, y: y - 1},
                     position: {...position}
                 }) 
             }

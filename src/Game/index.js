@@ -22,10 +22,15 @@ class Game extends React.Component {
 
     checkTile = (x, y) => {
 
-        if (x > 12 || x < 1 || y > 12 || y < 1) {
+        if (x > 11 || x < 0 || y > 11 || y < 0) {
+            return false
+        } 
+
+        if ((this.state.currentStructure[y][x] !== "*") && (this.state.currentStructure[y][x] !== "&")) {
+            console.log("return false")
             return false
         } else {
-            return this.state.currentStructure[x - 1][y - 1]
+            return true
         }
     }
 

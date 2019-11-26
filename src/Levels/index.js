@@ -7,6 +7,8 @@ const Level = (props) => {
 
     let levelStructure = plan(props.level)
 
+    console.log(levelStructure)
+
     
 
 
