@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Level1 from './Levels/Level-1.js'
+import Game from './Game'
 
 // Leviathan Front-End
 
@@ -8,7 +8,7 @@ function App() {
 
     return (
         <div className="App">
-          <Level1 />
+            <Game />
         </div>
     );
 }

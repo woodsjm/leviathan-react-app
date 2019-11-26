@@ -7,6 +7,10 @@
     height: 768px;
     display: table;
     margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
 }
 
 .map_row {
