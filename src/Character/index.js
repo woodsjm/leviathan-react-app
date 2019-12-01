@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { plan } from '../Levels/Structures/plans.js'
 import './character.css'
 
-let top = 16
-let left = 16
+let top = 0
+let left = 0
 
 
 class Character extends React.Component {
@@ -34,10 +34,7 @@ class Character extends React.Component {
 
         if (direction === 'ArrowRight') {
 
-            console.log(this.props.check(x + 1, y))
-
             if ((this.props.check(x + 1, y) === true) && (x + 1 < 12)) {
-                console.log("Inside ArrowRight")
                 left += 64
                 const position = {...this.state.position}
                 position.left = `${left}px`
