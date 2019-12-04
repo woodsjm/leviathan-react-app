@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { plan } from '../Levels/Structures/plans.js'
 import './character.css'
 
+
 let top = 0
 let left = 0
 
@@ -26,14 +27,17 @@ class Character extends React.Component {
         } 
     }
 
-    //=========CHARACTER MOVEMENT METHODS=========
+    //=========BACKPACK ACTIONS========= 
+
+    //=========ATTACKING SKILLS========= 
+
+    //=========CHARACTER MOVEMENT=========
 
     move = (direction) => {
         const x = this.state.tile.x
         const y = this.state.tile.y
 
         if (direction === 'ArrowRight') {
-
             if ((this.props.check(x + 1, y) === true) && (x + 1 < 12)) {
                 left += 64
                 const position = {...this.state.position}
@@ -87,9 +91,7 @@ class Character extends React.Component {
     render() {
         return(
             <div >
-                
                 <img className='sprite' style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile000.png'} />
-                
             </div>
             )
     }

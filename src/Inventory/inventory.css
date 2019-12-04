@@ -1,0 +1,28 @@
+#inventory-box {
+    width: 30%;
+    min-height: 100%;
+    border: 2px dashed red;
+}
+
+
+.inventory-type {
+    width: 100%;
+    height: 50%;
+    border: 2px dashed green;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.slots {
+    border: 2px solid blue;
+    height: 100px;
+    width: 100px;
+    display:flex;
+    justify-content: center
+}
+
+.slots img{
+    display: block;
+    margin: auto;
+}
