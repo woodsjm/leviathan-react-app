@@ -13,14 +13,28 @@ class Game extends React.Component {
         super()
         this.state = {
             currentLevel: 1,
-            levelItems: items
+            levelItems: items  
         }
         this.checkTile = this.checkTile.bind(this)
     }
 
     componentDidMount() {
+        const currentStructure = plan(this.state.currentLevel)
+        
+        const lootPositions = currentStructure.reduce((arr, row, xIdx) => {
+            row.reduce((acc, value, yIdx) => {
+                if (value === '?') {
+                    let obj = {x: xIdx, y: yIdx}
+                    arr.push(obj)   
+                } 
+                return
+            }, 0)
+            return arr
+        }, [])
+
         this.setState({
             currentStructure: plan(this.state.currentLevel),
+            lootPositions: lootPositions
         })
     }
 
@@ -29,7 +43,7 @@ class Game extends React.Component {
             return false
         } 
 
-        if ((this.state.currentStructure[y][x] !== "*") && (this.state.currentStructure[y][x] !== "&")) {
+        if ((this.state.currentStructure[y][x] !== "*") && (this.state.currentStructure[y][x] !== "&") && (this.state.currentStructure[y][x] !== "?")) {
             return false
         } else {
             return true
@@ -39,12 +53,18 @@ class Game extends React.Component {
     handleInventory = (direction, inventoryAction, item) => {
 
         
-
-
     }
 
-
+    handleClick = (event) => {
+        
+    }
     render() {
+
+        let level;
+        if (this.state.currentStructure) {
+            level = <Level level={this.state.currentStructure} handleClick={this.handleClick} />
+        } 
+
         return(
             <div>
                 <h1>Here is Level One.</h1>
@@ -55,7 +75,7 @@ class Game extends React.Component {
 
 
                     <div className="Game-Box">
-                      <Level level={this.state.currentLevel} />
+                      {level}
                       <Character level={this.state.currentLevel} check={this.checkTile}/>
                     </div>
 

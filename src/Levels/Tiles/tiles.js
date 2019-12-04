@@ -12,6 +12,9 @@ EastFacing:
 
 
 const tileImages = {
+
+        '?': 'url(/Leviathan-Tiles/space.png',
+
         '*': 'url(/Leviathan-Tiles/Floor/basicFloor.png)',
         '&': 'url(/Leviathan-Tiles/Floor/stripedFloor.png)',
 

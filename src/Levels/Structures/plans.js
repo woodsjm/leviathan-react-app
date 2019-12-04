@@ -17,11 +17,11 @@ const plans = {
 ab**&**&**po
 dc*****&**ij
 @+**&**&**lk
-%#*****&**ij
+%#**?**&**ij
 @+**&**&**lk
 %#*****&**ij
 ef**&**&**lk
-hg*****&**qr
+hg***?*&**qr
 ****&**&**ts
 *&*****&****
 ****&**&**&*`
@@ -44,10 +44,10 @@ hg*****&**qr
 }
 
 
-
-
 const plan = (level) => {
     const plan = plans[level]
+
+    console.log(plan)
     
     return plan.trim().split('\n').map(l => [...l]);
 }

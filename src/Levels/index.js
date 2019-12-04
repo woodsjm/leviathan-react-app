@@ -3,11 +3,17 @@ import './levels.css';
 import { plan } from './Structures/plans.js'
 import tileImages from './Tiles/tiles.js'
 
+const tileTypes = {
+    '?': 'loot',
+    '&': 'floor',
+    '*': 'floor'
+}
+
 const Level = (props) => {
 
-    let levelStructure = plan(props.level)
+    let levelStructure = props.level
 
-    console.log(levelStructure)
+    console.log(props)
 
     
 
@@ -19,7 +25,9 @@ const Level = (props) => {
 
         return (
 
-            row.map((imageType) => {   
+            row.map((imageType) => { 
+
+                console.log(imageType)  
 
                 const tileStyle = {
 
@@ -32,6 +40,16 @@ const Level = (props) => {
                 backgroundImage: tileImages[imageType]
 
                 }
+
+                // let type = imageType
+
+                // if (imageType === '?') {
+                //     type = 'loot'
+                // } else if (imageType === '&' || imageType === '*') {
+                //     type = 'floor'
+                // } else {
+                //     type = 'wall'
+                // }
                 
                 if (x === 12) {
                     y -= 1
@@ -40,11 +58,7 @@ const Level = (props) => {
 
                 x += 1
 
-                if (imageType === '*' || '&') {
-                    return <div style={tileStyle} data-tile='floor' data-x={x} data-y={y}></div>
-                } else {
-                    return <div style={tileStyle} data-x={x} data-y={y}></div>
-                }
+                return <div style={tileStyle} data-tile={tileTypes[imageType]} data-x={x} data-y={y} onClick={props.handleClick}></div>
             })    
         )   
     })

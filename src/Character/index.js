@@ -86,6 +86,8 @@ class Character extends React.Component {
                 }) 
             }
         }
+
+        
     }
 
     render() {
