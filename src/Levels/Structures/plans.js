@@ -1,15 +1,3 @@
-/* 
-
-Walls
-
-EastFacing:
-    NE: !
-    NW: @
-    SE: #
-    SW: %
-
-*/
-
 
 const plans = {
     1: `
@@ -47,7 +35,7 @@ hg***?*&**qr
 const plan = (level) => {
     const plan = plans[level]
 
-    console.log(plan)
+    
     
     return plan.trim().split('\n').map(l => [...l]);
 }

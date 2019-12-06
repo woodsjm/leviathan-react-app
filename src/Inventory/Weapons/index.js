@@ -1,36 +1,28 @@
 import React from 'react'
 import '../inventory.css'
+import imageStyle from './image.js'
 
 const Weapons = (props) => {
-
-    const keys = Object.keys(props.weapons)
-    
-    const gunList = keys.map(value => {
-
-        const image = {
-            height: '50px',
-            width: '60px',
-        }
-        
-        return (
-            <div className='slots'>
-                <img style={image} src={props.weapons[value].image} />
-            </div>
+    const gunList = props.weapons.map(value => {
+        if (value !== null) {
+            return (
+                <div className='slots'>
+                    <img style={imageStyle} src={value.image} />
+                 </div>
+                )
+        } else {
+            return (
+                <div className='slots'>
+                    <div style={imageStyle}></div>
+                </div>
             )
+        }    
     })
-
-    
-
-
     return(
         <div className='inventory-type'>
-            
-
-            {gunList}
-
-            
+            {gunList}   
         </div>
-        )
+    )
 }
 
 export default Weapons

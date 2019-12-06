@@ -13,7 +13,7 @@ const Level = (props) => {
 
     let levelStructure = props.level
 
-    console.log(props)
+    
 
     
 
@@ -27,7 +27,7 @@ const Level = (props) => {
 
             row.map((imageType) => { 
 
-                console.log(imageType)  
+                 
 
                 const tileStyle = {
 

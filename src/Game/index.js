@@ -4,28 +4,34 @@ import './game.css';
 import { plan } from '../Levels/Structures/plans.js'
 import Level from '../Levels'
 import Inventory from '../Inventory' 
-import { items } from '../Items/items.js'
+import { items, getItemsToPopulate } from '../Items/items.js'
 
  
 
 class Game extends React.Component {
     constructor() {
         super()
-        this.state = {
+        this.state = { 
+            pickedUpItem: null,
             currentLevel: 1,
-            levelItems: items  
+            inventoryChanges: false  
         }
         this.checkTile = this.checkTile.bind(this)
+        this.checkLoot = this.checkLoot.bind(this)
     }
 
     componentDidMount() {
         const currentStructure = plan(this.state.currentLevel)
-        
+
+        let itemToPopulate = 0
+        let itemsInLevel = getItemsToPopulate()
+
         const lootPositions = currentStructure.reduce((arr, row, xIdx) => {
             row.reduce((acc, value, yIdx) => {
                 if (value === '?') {
-                    let obj = {x: xIdx, y: yIdx}
-                    arr.push(obj)   
+                    let obj = {x: xIdx, y: yIdx, item: itemsInLevel[itemToPopulate]}
+                    arr.push(obj)
+                    itemToPopulate++   
                 } 
                 return
             }, 0)
@@ -34,7 +40,7 @@ class Game extends React.Component {
 
         this.setState({
             currentStructure: plan(this.state.currentLevel),
-            lootPositions: lootPositions
+            levelItems: lootPositions
         })
     }
 
@@ -55,8 +61,24 @@ class Game extends React.Component {
         
     }
 
-    handleClick = (event) => {
-        
+    checkLoot = (x, y) => {
+        for (let i = 0; i < this.state.levelItems.length; i++) {
+            if (this.state.levelItems[i].x === x && this.state.levelItems[i].y === y) {
+                let equipment = this.state.levelItems[i].item
+                let copy = this.state.levelItems
+                copy.slice(i, i + 1)
+                this.setState({
+                    levelItems: copy,
+                    pickedUpItem: equipment
+                })
+
+
+
+                return 
+            }
+        }
+
+        return 
     }
     render() {
 
@@ -76,10 +98,10 @@ class Game extends React.Component {
 
                     <div className="Game-Box">
                       {level}
-                      <Character level={this.state.currentLevel} check={this.checkTile}/>
+                      <Character level={this.state.currentLevel} check={this.checkTile} checkForLoot={this.checkLoot}/>
                     </div>
 
-                    <Inventory items={this.state.levelItems}/>
+                    <Inventory items={this.state.levelItems} pickedUpItem={this.state.pickedUpItem}/>
 
                 </div>
             </div>
