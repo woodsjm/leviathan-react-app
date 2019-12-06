@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Weapons from './Weapons'
 import Medical from './Medical'
 
+
 class Inventory extends React.Component {
     constructor(props) {
         super(props)
@@ -9,6 +10,10 @@ class Inventory extends React.Component {
             pickedUpItem: null,
             backpack: { 
                 weapon: [ 
+                { 0: null},
+                { 1: null}
+                ],
+                medical: [
                 { 0: null},
                 { 1: null}
                 ]
@@ -45,18 +50,16 @@ class Inventory extends React.Component {
         }
     }
 
-    
     render() {
         return(
             <div id='inventory-box'>
                 <div >
                     <h1>Inventory</h1>
                         <Weapons weapons={this.state.backpack.weapon} />
-                        <Medical />
+                        <Medical medical={this.state.backpack.medical} />
                 </div>
-
             </div>
-            )
+        )
     }
 }
 

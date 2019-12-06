@@ -20,7 +20,8 @@ const items = [
     {emergency: [
         {   
             type: 'medical',
-            name: "Bandage",
+            image: 'Leviathan-Items/Medical/MedKit.png',
+            name: "MedKit",
             heal: 10
         }
     ]}

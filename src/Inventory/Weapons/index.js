@@ -1,6 +1,7 @@
 import React from 'react'
 import '../inventory.css'
-import imageStyle from './image.js'
+import imageStyle from '../image.js'
+
 
 const Weapons = (props) => {
     const gunList = props.weapons.map(value => {

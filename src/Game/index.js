@@ -7,7 +7,6 @@ import Inventory from '../Inventory'
 import { items, getItemsToPopulate } from '../Items/items.js'
 
  
-
 class Game extends React.Component {
     constructor() {
         super()
@@ -26,8 +25,8 @@ class Game extends React.Component {
         let itemToPopulate = 0
         let itemsInLevel = getItemsToPopulate()
 
-        const lootPositions = currentStructure.reduce((arr, row, xIdx) => {
-            row.reduce((acc, value, yIdx) => {
+        const lootPositions = currentStructure.reduce((arr, column, yIdx) => {
+            column.reduce((acc, value, xIdx) => {
                 if (value === '?') {
                     let obj = {x: xIdx, y: yIdx, item: itemsInLevel[itemToPopulate]}
                     arr.push(obj)
@@ -56,30 +55,23 @@ class Game extends React.Component {
         }
     }
 
-    handleInventory = (direction, inventoryAction, item) => {
-
-        
-    }
-
     checkLoot = (x, y) => {
         for (let i = 0; i < this.state.levelItems.length; i++) {
             if (this.state.levelItems[i].x === x && this.state.levelItems[i].y === y) {
+                
                 let equipment = this.state.levelItems[i].item
                 let copy = this.state.levelItems
-                copy.slice(i, i + 1)
+                copy.splice(i, i + 1)
                 this.setState({
                     levelItems: copy,
                     pickedUpItem: equipment
                 })
-
-
-
                 return 
             }
         }
-
         return 
     }
+
     render() {
 
         let level;

@@ -88,7 +88,7 @@ class Character extends React.Component {
         }
 
         if (this.props.checkForLoot(this.state.tile.x, this.state.tile.y)){
-            
+            console.log('checking')
         }
     }
 
