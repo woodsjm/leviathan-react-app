@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Weapons from './Weapons'
 import Medical from './Medical'
 import EquippedWeapon from './EquippedWeapon'
-
+import './character.css'
 
 class Character extends React.Component {
     constructor(props) {
@@ -53,14 +53,26 @@ class Character extends React.Component {
 
     render() {
         return(
-            <div id='inventory-box'>
-                <div >
-                    <h1>Inventory</h1>
-                        <div>
-                            <Weapons weapons={this.state.backpack.weapon} equipWeapon={this.equipWeapon} equippedWeapon={this.state.equippedWeapon}/>
-                            <EquippedWeapon equippedWeapon={this.state.equippedWeapon} />
-                        </div>
-                        <Medical medical={this.state.backpack.medical} />
+            <div id='character-box'>
+                <div>
+                    <div>   
+                        <h3>Inventory</h3>
+                            <div>
+                                <Weapons weapons={this.state.backpack.weapon} equipWeapon={this.equipWeapon} equippedWeapon={this.state.equippedWeapon}/>
+                            </div>
+                            <div>
+                                <EquippedWeapon equippedWeapon={this.state.equippedWeapon} weapons={this.state.backpack.weapon}/>
+                            </div>
+                            <div>
+                                <Medical medical={this.state.backpack.medical} />
+                            </div>
+                    </div>
+                    <div>
+
+                        <h3>Stats</h3>
+
+
+                    </div>
                 </div>
             </div>
         )

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../inventory.css'
+import '../character.css'
 import imageStyle from '../image.js'
 
 
