@@ -10,7 +10,7 @@ import { items, getItemsToPopulate } from '../Items/items.js'
 class Game extends React.Component {
     constructor() {
         super()
-        this.state = { 
+        this.state = {
             pickedUpItem: null,
             currentLevel: 1,
             inventoryChanges: false  
