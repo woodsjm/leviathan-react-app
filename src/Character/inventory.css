@@ -4,18 +4,17 @@
     border: 2px dashed red;
 }
 
-
 .inventory-type {
     width: 100%;
     height: 50%;
     border: 2px dashed green;
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: space-around;
 }
 
 .slots {
-    border: 2px solid blue;
+    margin: 1px 2px;
     height: 100px;
     width: 100px;
     display:flex;
@@ -25,4 +24,12 @@
 .slots img{
     display: block;
     margin: auto;
+}
+
+#equipped {
+    border: 2px solid blue;
+}
+
+#not-equipped {
+    border: 2px solid black;
 }

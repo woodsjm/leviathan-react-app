@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Character from '../Character'
+import CharacterSprite from '../CharacterSprite'
 import './game.css';
 import { plan } from '../Levels/Structures/plans.js'
 import Level from '../Levels'
-import Inventory from '../Inventory' 
+import Character from '../Character' 
 import { items, getItemsToPopulate } from '../Items/items.js'
 
  
@@ -21,7 +21,6 @@ class Game extends React.Component {
 
     componentDidMount() {
         const currentStructure = plan(this.state.currentLevel)
-
         let itemToPopulate = 0
         let itemsInLevel = getItemsToPopulate()
 
@@ -44,11 +43,13 @@ class Game extends React.Component {
     }
 
     checkTile = (x, y) => {
+        const s = this.state.currentStructure
+
         if (x > 11 || x < 0 || y > 11 || y < 0) {
             return false
         } 
 
-        if ((this.state.currentStructure[y][x] !== "*") && (this.state.currentStructure[y][x] !== "&") && (this.state.currentStructure[y][x] !== "?")) {
+        if ((s[y][x] !== "*") && (s[y][x] !== "&") && (s[y][x] !== "?")) {
             return false
         } else {
             return true
@@ -73,31 +74,23 @@ class Game extends React.Component {
     }
 
     render() {
-
         let level;
         if (this.state.currentStructure) {
             level = <Level level={this.state.currentStructure} handleClick={this.handleClick} />
         } 
-
         return(
             <div>
                 <h1>Here is Level One.</h1>
-
                 <div style={{border: '2px solid green'}}></div>
-
                 <div className="Main-Container">
-
-
                     <div className="Game-Box">
                       {level}
-                      <Character level={this.state.currentLevel} check={this.checkTile} checkForLoot={this.checkLoot}/>
+                      <CharacterSprite level={this.state.currentLevel} check={this.checkTile} checkForLoot={this.checkLoot}/>
                     </div>
-
-                    <Inventory items={this.state.levelItems} pickedUpItem={this.state.pickedUpItem}/>
-
+                    <Character items={this.state.levelItems} pickedUpItem={this.state.pickedUpItem}/>
                 </div>
             </div>
-            )
+        )
     }
 }
 

@@ -1,76 +1,69 @@
 import React, { Component } from 'react'
-import { plan, startPos } from '../Levels/Structures/plans.js'
-import './character.css'
+import Weapons from './Weapons'
+import Medical from './Medical'
+import EquippedWeapon from './EquippedWeapon'
 
 
 class Character extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            top: startPos[this.props.level]['top'],
-            left: startPos[this.props.level]['left'],
-            tile: {x: 0, y: 0},
-            position: {top: `${startPos[this.props.level]['top']}px`, left: `${startPos[this.props.level]['left']}px`}
+            equippedWeapon: 0,
+            pickedUpItem: null,
+            backpack: { 
+                weapon: [ 
+                { 0: null},
+                { 1: null}
+                ],
+                medical: [
+                { 0: null},
+                { 1: null}
+                ]
+            },
+
         }
-        this.handleArrowKeys = this.handleArrowKeys.bind(this)
     }
 
-    componentDidMount() {
-        document.addEventListener("keydown", this.handleArrowKeys, false)
-    }
-
-    handleArrowKeys = (event) => {
-        if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-            this.directCharacter(event.key)
-        } 
-    }
-    //=========BACKPACK ACTIONS========= 
-
-    //=========ATTACKING SKILLS========= 
-
-    //=========CHARACTER MOVEMENT=========
-
-    move = (direction, change, tile, x, y) => {
-        let vector = this.state[direction] + change
-        const position = {...this.state.position}
-        position[direction] = `${vector}px`
+    componentDidMount(props) {
         this.setState({
-            [direction]: vector,
-            tile: tile,
-            position: {...position}
+            inventoryChanges: this.props.inventoryChanges
         })
-        this.props.checkForLoot(this.state.tile.x, this.state.tile.y)
-        return
     }
 
-    directCharacter = (arrow) => {
-        const x = this.state.tile.x
-        const y = this.state.tile.y
-        if (arrow === 'ArrowRight') {
-            if ((this.props.check(x + 1, y) === true) && (x + 1 < 12)) {
-                this.move('left', 64, {x: x + 1, y: y}, x, y)
-            }
-        } else if (arrow === 'ArrowLeft') {
-            if ((this.props.check(x - 1, y) === true) && (x - 1 >= 0)) {
-                this.move('left', -64, {x: x - 1, y: y}, x, y) 
-            }   
-        } else if (arrow === 'ArrowDown') {
-            if ((this.props.check(x, y + 1) === true) && (y + 1 < 12)) {
-                this.move('top', 64, {x: x, y: y + 1}, x, y)  
-            }
-        } else if (arrow === 'ArrowUp') {
-            if ((this.props.check(x, y - 1) === true) && (y - 1 >= 0)) {
-                this.move('top', -64, {x: x, y: y - 1}, x, y) 
-            }
+    componentDidUpdate(prevProps) {
+        if (this.props.pickedUpItem !== prevProps.pickedUpItem){
+            const backpack = this.state.backpack
+            const itemType = this.props.pickedUpItem.type
+            const slot = backpack[itemType].findIndex((e, idx) => {
+                return e[idx] === null  
+            })
+            const newSlots = this.state.backpack
+            newSlots[itemType].splice(slot, 1, this.props.pickedUpItem)
+            this.setState({
+                backpack: newSlots
+            })
         }
+    }
+
+    equipWeapon = (idx) => {
+        this.setState({
+            equippedWeapon: idx
+        })
     }
 
     render() {
         return(
-            <div >
-                <img className='sprite' style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile000.png'} />
+            <div id='inventory-box'>
+                <div >
+                    <h1>Inventory</h1>
+                        <div>
+                            <Weapons weapons={this.state.backpack.weapon} equipWeapon={this.equipWeapon} equippedWeapon={this.state.equippedWeapon}/>
+                            <EquippedWeapon equippedWeapon={this.state.equippedWeapon} />
+                        </div>
+                        <Medical medical={this.state.backpack.medical} />
+                </div>
             </div>
-            )
+        )
     }
 }
 
