@@ -1,7 +1,8 @@
 .box {
     height: 100%;
     width: 100%;
-    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -20,8 +21,13 @@
     width: 80%;
     height: 90%;
     border: 1px solid purple;
-    margin: 2px 2px;
+    margin: 5px 5px;
     display: flex;
     justify-content: space-around;
+}
+
+#title {
+    position: absolute;
+    bottom: 0;
 }
 

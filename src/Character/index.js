@@ -4,6 +4,7 @@ import Medical from './Medical'
 import EquippedWeapon from './EquippedWeapon'
 import './character.css'
 
+
 class Character extends React.Component {
     constructor(props) {
         super(props)
@@ -20,7 +21,11 @@ class Character extends React.Component {
                 { 1: null}
                 ]
             },
-
+            vitals: {
+                health: 100,
+                shields: 100
+            },
+            lives: 5
         }
     }
 
@@ -31,6 +36,10 @@ class Character extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        if (this.props.timeToFight !== prevProps.timeToFight) {
+            this.attack()
+        }
+
         if (this.props.pickedUpItem !== prevProps.pickedUpItem){
             const backpack = this.state.backpack
             const itemType = this.props.pickedUpItem.type
@@ -51,12 +60,25 @@ class Character extends React.Component {
         })
     }
 
+    attack = () => {
+        const idx = this.state.equippedWeapon
+        let damage = 0
+        let accuracy = 0
+
+        const weapon = this.state.backpack.weapon[idx]
+        if (weapon !== null) {
+            damage = weapon.damage
+            accuracy = weapon.accuracy
+        }
+        const attackResult = this.props.attack(damage, accuracy)
+    }
+
     render() {
         return(
             <div id='character-box'>
                 <div>
-                    <div>   
-                        <h3>Inventory</h3>
+                    <div>
+                        <h3>Inventory</h3>  
                             <div>
                                 <Weapons weapons={this.state.backpack.weapon} equipWeapon={this.equipWeapon} equippedWeapon={this.state.equippedWeapon}/>
                             </div>
@@ -68,7 +90,6 @@ class Character extends React.Component {
                             </div>
                     </div>
                     <div>
-
                         <h3>Stats</h3>
 
 

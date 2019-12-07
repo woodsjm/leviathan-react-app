@@ -13,7 +13,11 @@ const EquippedWeapon = (props) => {
    
     return(
         <div className='box'>
-            <h4>Equipped Stats</h4>
+            <div className='title-box'>
+                <div className='title'>
+                    Equipped Stats
+                </div>
+            </div>
             <div className='container'>
                 <div className='weapon-stats-box'>
                     <div>

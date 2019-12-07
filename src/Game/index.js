@@ -5,15 +5,18 @@ import { plan } from '../Levels/Structures/plans.js'
 import Level from '../Levels'
 import Character from '../Character' 
 import { items, getItemsToPopulate } from '../Items/items.js'
+import EnemySprite from '../EnemySprite'
 
  
 class Game extends React.Component {
     constructor() {
         super()
         this.state = {
+            timeToFight: false,
             pickedUpItem: null,
             currentLevel: 1,
-            inventoryChanges: false  
+            inventoryChanges: false,
+            enemyTiles: []  
         }
         this.checkTile = this.checkTile.bind(this)
         this.checkLoot = this.checkLoot.bind(this)
@@ -44,10 +47,17 @@ class Game extends React.Component {
 
     checkTile = (x, y) => {
         const s = this.state.currentStructure
-
         if (x > 11 || x < 0 || y > 11 || y < 0) {
             return false
-        } 
+        }
+
+        const tiles = this.state.enemyTiles
+        for (let i = 0; i < tiles.length; i++) {
+            if (tiles[i].x === x && tiles[i].y === y) {
+                this.fight()
+                return false
+            }
+        }
 
         if ((s[y][x] !== "*") && (s[y][x] !== "&") && (s[y][x] !== "?")) {
             return false
@@ -73,6 +83,24 @@ class Game extends React.Component {
         return 
     }
 
+    fight = () => {
+        this.setState({
+            timeToFight: !this.state.timeToFight
+        })
+    }
+
+    fightResult = (damage, accuracy) => {
+        const enemyDamage = Math.round(damage * (accuracy / 100))
+        console.log(enemyDamage)
+    }
+    placeEnemy = (tile) => {
+        const tileArr = this.state.enemyTiles
+        tileArr.push(tile)
+        this.setState({
+            enemyTiles: tileArr
+        })
+    }
+
     render() {
         let level;
         if (this.state.currentStructure) {
@@ -80,14 +108,28 @@ class Game extends React.Component {
         } 
         return(
             <div>
-                <h1>Here is Level One.</h1>
+                <h1>{`Level ${this.state.currentLevel}`}</h1>
                 <div style={{border: '2px solid green'}}></div>
                 <div className="Main-Container">
                     <div className="Game-Box">
                       {level}
-                      <CharacterSprite level={this.state.currentLevel} check={this.checkTile} checkForLoot={this.checkLoot}/>
+                      <CharacterSprite 
+                          level={this.state.currentLevel}
+                          check={this.checkTile} 
+                          checkForLoot={this.checkLoot}
+                      />
+                      <EnemySprite 
+                          level={this.state.currentLevel} 
+                          check={this.checkTile} 
+                          trackEnemyTile={this.placeEnemy}
+                      />
                     </div>
-                    <Character items={this.state.levelItems} pickedUpItem={this.state.pickedUpItem}/>
+                    <Character 
+                        items={this.state.levelItems} 
+                        pickedUpItem={this.state.pickedUpItem}
+                        timeToFight={this.state.timeToFight}
+                        attack={this.fightResult}
+                    />
                 </div>
             </div>
         )

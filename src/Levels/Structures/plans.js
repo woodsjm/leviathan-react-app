@@ -37,9 +37,13 @@ const startPos = {
     2: {top: 0, left: 1}
 }
 
+const enemyStart = {
+    1: {top: 9, left: 4}
+}
+
 const plan = (level) => {
     const plan = plans[level]
     return plan.trim().split('\n').map(l => [...l]);
 }
 
-export { plan, startPos }
+export { plan, startPos, enemyStart }
