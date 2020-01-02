@@ -2,46 +2,46 @@ import React, { Component } from 'react'
 import { enemyStart } from '../Levels/Structures/plans.js' 
 import './enemy.css'
 
-class EnemySprite extends React.Component {
-        constructor(props) {
-        super(props)
-        this.state = {
-            alive: true,
-            tile: {x: (enemyStart[this.props.level]['left']), y: (enemyStart[this.props.level]['top'])},
-            position: {top: `${enemyStart[this.props.level]['top'] * 64}px`, left: `${enemyStart[this.props.level]['left'] * 64}px`}
-        }
-    }
+// class EnemySprite extends React.Component {
+//         constructor(props) {
+//         super(props)
+//         this.state = {
+//             enemies: enemyStart[this.props.level]
+//         }
+//     }
 
-    componentDidMount(props) {
-        this.props.trackEnemyTile(this.state.tile)
-    }
+//     componentDidMount(props) {
+//         this.props.trackEnemyTile(this.state.tile)
+//     }
 
-    //=========CHARACTER MOVEMENT=========
+//     render() {
+//         const enemies = this.state.enemies.map((enemy, idx) => {
+//             return (
+//                     <img className='sprite' id={idx} style={{top: `${enemy['top'] * 64}px`, left: `${enemy['left'] * 64}px`}} src={'/Leviathan-Sprites/tile004.png'} />
+//                 )
+//         })
+//         return(
+//             <div>
+//                 {enemies}
+//             </div>
+//             )
+//     }
+// }
 
-    move = (direction, change, tile, x, y) => {
-        let vector = this.state[direction] + change
-        const position = {...this.state.position}
-        position[direction] = `${vector}px`
-        this.setState({
-            [direction]: vector,
-            tile: tile,
-            position: {...position}
-        })
-        return
-    }
+// export default EnemySprite
 
+const EnemySprite = (props) => {
     
-
-    render() {
-        const sprite = <img className='sprite' style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile004.png'} />
-        return(
-            <div >
-                {this.state.alive === true
-                    ? sprite :
-                    null}
-            </div>
-            )
-    }
+    const enemies = props.enemies.map((enemy, idx) => {
+            return (
+                    <img className='sprite' id={idx} style={{top: `${enemy['top'] * 64}px`, left: `${enemy['left'] * 64}px`}} src={'/Leviathan-Sprites/tile004.png'} />
+                )
+        })
+    return(
+        <div>
+            {enemies}
+        </div>
+        )
 }
 
 export default EnemySprite

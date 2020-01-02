@@ -38,7 +38,7 @@ const startPos = {
 }
 
 const enemyStart = {
-    1: {top: 9, left: 4}
+    1: [{top: 9, left: 4, health: 100, damage: 10, accuracy: 20}, {top: 7, left: 6, health: 100, damage: 10, accuracy: 20}]
 }
 
 const plan = (level) => {

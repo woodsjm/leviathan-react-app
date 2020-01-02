@@ -68,7 +68,9 @@ class CharacterSprite extends React.Component {
     render() {
         return(
             <div >
-                <img className='sprite' style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile000.png'} />
+                <img className='sprite' id='player' data-x={this.state.tile.x}
+                  data-y={this.state.tile.y}
+                  style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile000.png'} />
             </div>
             )
     }
