@@ -108,7 +108,7 @@ class Game extends React.Component {
             return this.state.enemies[this.state.currentEnemy].damage
         }
 
-        let damageGiven = cloneDeep(this.state.enemies[this.state.currentEnemy].damage) 
+        let damageGiven = this.state.enemies[this.state.currentEnemy].damage
         const outcomeOfShot = chance.weighted(['hit', 'miss'], [accuracy, 10])
         const outcomeOfBeingShotAt = chance.weighted(['hit', 'miss'], [this.state.enemies[this.state.currentEnemy].accuracy, 10])
         
