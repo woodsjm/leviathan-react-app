@@ -14,8 +14,8 @@ let chance = new Chance()
 
 
 class Game extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             timeToFight: false,
             pickedUpItem: null,
@@ -71,7 +71,7 @@ class Game extends React.Component {
             }
         }
 
-        if ((s[y][x] !== "*") && (s[y][x] !== "&") && (s[y][x] !== "?")) {
+        if ((s[y][x] !== "*") && (s[y][x] !== "&") && (s[y][x] !== "?") && (s[y][x] !== "z")) {
             return false
         } else {
             return true
@@ -154,6 +154,7 @@ class Game extends React.Component {
                         timeToFight={this.state.timeToFight}
                         attack={this.fightResult}
                         restartLevel={this.props.restartLevel}
+                        lives={this.props.lives}
                     />
                 </div>
             </div>

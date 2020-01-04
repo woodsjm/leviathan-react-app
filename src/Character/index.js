@@ -100,6 +100,9 @@ class Character extends React.Component {
                             <div>
                                 <Vitals vitals={this.state.vitals}/>
                             </div>
+                            <div>
+                                <h3>Lives Remaining: {this.props.lives}</h3>
+                            </div>
                     </div>
                     
                 </div>

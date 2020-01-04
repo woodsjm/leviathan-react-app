@@ -7,7 +7,8 @@ import tileImages from './Tiles/tiles.js'
 const tileTypes = {
     '?': 'loot',
     '&': 'floor',
-    '*': 'floor'
+    '*': 'floor',
+    'z': 'exit'
 }
 
 const Level = (props) => {

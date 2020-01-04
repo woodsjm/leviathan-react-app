@@ -21,8 +21,7 @@ class Main extends React.Component {
         return (
             <div>
                 <h1>{`Level ${this.state.level}`}</h1>
-                <Game key={this.state.restart} restartLevel={this.restart} />
-
+                <Game key={this.state.restart} restartLevel={this.restart} lives={this.state.lives}/>
             </div>
             )
     }

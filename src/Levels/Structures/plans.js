@@ -12,7 +12,7 @@ ef**&**&**lk
 hg***?*&**qr
 ****&**&**ts
 *&*****&****
-****&**&**&*`
+****&**&**&z`
 ,
 
     2: `
@@ -46,11 +46,11 @@ const plan = (level) => {
     return plan.trim().split('\n').map(l => [...l]);
 }
 
-// Need this deep copy for the purpose of saving a user's game
-const grabEnemies = (level) => {
-    const enemiesForTheLevel = JSON.parse(JSON.stringify(enemyStart[level]))
-    console.log(enemiesForTheLevel)
-    return enemiesForTheLevel
-}
 
-export { plan, startPos, enemyStart, grabEnemies }
+// const grabEnemies = (level) => {
+//     const enemiesForTheLevel = JSON.parse(JSON.stringify(enemyStart[level]))
+//     console.log(enemiesForTheLevel)
+//     return enemiesForTheLevel
+// }
+
+export { plan, startPos, enemyStart }

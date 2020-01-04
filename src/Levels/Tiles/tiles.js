@@ -15,6 +15,8 @@ const tileImages = {
 
         '?': 'url(/Leviathan-Tiles/space.png',
 
+        'z': 'url(/Leviathan-Tiles/Exit/escape-hatch.png',
+
         '*': 'url(/Leviathan-Tiles/Floor/basicFloor.png)',
         '&': 'url(/Leviathan-Tiles/Floor/stripedFloor.png)',
 
