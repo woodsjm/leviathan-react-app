@@ -138,8 +138,6 @@ class Game extends React.Component {
 
         return(
             <div>
-                <h1>{`Level ${this.state.currentLevel}`}</h1>
-                <div style={{border: '2px solid green'}}></div>
                 <div className="Main-Container">
                     <div className="Game-Box">
                       {level}

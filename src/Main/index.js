@@ -6,18 +6,23 @@ class Main extends React.Component {
     constructor() {
         super()
         this.state = {
-            refresh: false
+            restart: false,
+            lives: 10,
+            level: 1
         }
     }
     restart = () => {
         this.setState({
-            refresh: !this.state.refresh
+            restart: !this.state.restart
         })
     }
     render() {
+        
         return (
             <div>
-                <Game key={this.state.refresh} restartLevel={this.restart}/>
+                <h1>{`Level ${this.state.level}`}</h1>
+                <Game key={this.state.restart} restartLevel={this.restart} />
+
             </div>
             )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Weapons from './Weapons'
 import Medical from './Medical'
+import Vitals from './Vitals'
 import EquippedWeapon from './EquippedWeapon'
 import './character.css'
 
@@ -23,7 +24,7 @@ class Character extends React.Component {
             },
             vitals: {
                 health: 100,
-                shields: 100
+                shield: 100
             },
             lives: 5
         }
@@ -96,12 +97,11 @@ class Character extends React.Component {
                             <div>
                                 <Medical medical={this.state.backpack.medical} />
                             </div>
+                            <div>
+                                <Vitals vitals={this.state.vitals}/>
+                            </div>
                     </div>
-                    <div>
-                        <h3>Stats</h3>
-
-
-                    </div>
+                    
                 </div>
             </div>
         )

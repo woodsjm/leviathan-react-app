@@ -15,7 +15,7 @@ const EquippedWeapon = (props) => {
         <div className='box'>
             <div className='title-box'>
                 <div className='title'>
-                    Equipped Stats
+                    Equipped Weapon Stats
                 </div>
             </div>
             <div className='container'>
