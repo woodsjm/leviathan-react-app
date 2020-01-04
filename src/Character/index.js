@@ -63,27 +63,25 @@ class Character extends React.Component {
     attack = () => {
         const idx = this.state.equippedWeapon
         const weapon = this.state.backpack.weapon[idx]
-        //console.log(this.state.backpack.weapon)
-        //console.log(weapon)
+        let attackResult;
+
         if (weapon[idx] === null) {
-            const attackResult = this.props.attack(0, 0)
-            console.log(attackResult)
+            attackResult = this.props.attack(0, 0)  
         } else if (weapon !== null) {
-            const attackResult = this.props.attack(weapon['damage'], weapon['accuracy'])
+            attackResult = this.props.attack(weapon['damage'], weapon['accuracy'])
         }
-        // if (weapon !== null) {
-        //     const attackResult = this.props.attack(weapon['damage'], weapon['accuracy'])
-        //     // damage = weapon.damage
-        //     // accuracy = weapon.accuracy
-        // } else {
-        //     const attackResult = this.props.attack(0, 0)
-        // }
         
-        //const attackResult = this.props.attack(0, 0)
-        // console.log("Here is the result of attack", attackResult)
+        if (attackResult) {
+            let vitals = {...this.state.vitals}
+            vitals.health = vitals.health - attackResult
+            this.setState({vitals})
+        }
     }
 
     render() {
+        if (this.state.vitals.health <= 0) {
+            this.props.restartLevel()
+        }
         return(
             <div id='character-box'>
                 <div>
