@@ -7,7 +7,7 @@ import Character from '../Character'
 import { items, getItemsToPopulate } from '../Items/items.js'
 import EnemySprite from '../EnemySprite'
 
-// Import and load chancejs
+// Import and load chancejs library
 const Chance = require('chance')
 let chance = new Chance()
  
@@ -101,14 +101,18 @@ class Game extends React.Component {
     fight = (i) => {
         this.setState({
             timeToFight: !this.state.timeToFight,
-            /*currentEnemy: {x: enemyX, y: enemyY}*/
             currentEnemy: i
         })
     }
 
     fightResult = (damage, accuracy) => {
-        const acc = parseInt(accuracy)
-        const outcomeOfShot = chance.weighted(['hit', 'miss'], [acc, 10])
+        // Result if no weapon equipped
+        if (damage === 0 && accuracy === 0) {
+            return this.state.enemies[this.state.currentEnemy].damage
+        }
+
+        
+        const outcomeOfShot = chance.weighted(['hit', 'miss'], [accuracy, 10])
         const outcomeOfBeingShotAt = chance.weighted(['hit', 'miss'], [this.state.enemies[this.state.currentEnemy].accuracy, 10])
         if (outcomeOfShot === 'hit') {
             const enemies = this.state.enemies
