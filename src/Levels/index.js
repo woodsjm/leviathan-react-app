@@ -13,7 +13,7 @@ const tileTypes = {
 
 const Level = (props) => {
 
-    let levelStructure = props.level
+    let levelStructure = props.structure
     let y = 12
     let x = 0 
 

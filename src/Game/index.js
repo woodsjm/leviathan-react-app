@@ -19,11 +19,12 @@ class Game extends React.Component {
         this.state = {
             timeToFight: false,
             pickedUpItem: null,
-            currentLevel: 1,
+            currentLevel: this.props.currentLevel,
             inventoryChanges: false,
             currentEnemy: {x: null, y: null},
             enemyTiles: [],
-            enemies: null  
+            enemies: null,
+            completedLevel: false 
         }
         this.checkTile = this.checkTile.bind(this)
         this.checkLoot = this.checkLoot.bind(this)
@@ -46,7 +47,7 @@ class Game extends React.Component {
             return arr
         }, [])
 
-        const enemiesArr = cloneDeep(enemyStart[1])
+        const enemiesArr = cloneDeep(enemyStart[this.props.currentLevel])
         
         this.setState({
             currentStructure: plan(this.state.currentLevel),
@@ -62,19 +63,20 @@ class Game extends React.Component {
         }
 
         const enemies = this.state.enemies
-        
         for (let i = 0; i < enemies.length; i++) {
-            if (enemies[i]['left'] === x && enemies[i]['top'] === y) {
-                
+            if (enemies[i]['left'] === x && enemies[i]['top'] === y) { 
                 this.fight(i)
                 return false
             }
         }
 
-        if ((s[y][x] !== "*") && (s[y][x] !== "&") && (s[y][x] !== "?") && (s[y][x] !== "z")) {
+        if ((s[y][x] === "*") || (s[y][x] === "&") || (s[y][x] === "?")) {
+            return true
+        } else if ((s[y][x] === "z") && (this.state.completedLevel === true)) {
+            this.props.exitLevel()
             return false
         } else {
-            return true
+            return false
         }
     }
 
@@ -122,13 +124,19 @@ class Game extends React.Component {
                 enemies: enemies
             })
         }
+
+
+        if (this.state.enemies.length === 0) {
+            this.setState({completedLevel: true})
+        }
+
         return outcomeOfBeingShotAt === 'hit' ? damageGiven : false    
     }
 
     render() {
         let level;
         if (this.state.currentStructure) {
-            level = <Level level={this.state.currentStructure} handleClick={this.handleClick} />
+            level = <Level structure={this.state.currentStructure} handleClick={this.handleClick} />
         } 
 
         let enemySprites;

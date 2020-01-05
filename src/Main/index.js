@@ -8,7 +8,8 @@ class Main extends React.Component {
         this.state = {
             restart: false,
             lives: 10,
-            level: 1
+            level: 1,
+            gameShowing: true
         }
     }
     restart = () => {
@@ -16,12 +17,23 @@ class Main extends React.Component {
             restart: !this.state.restart
         })
     }
+
+    exitLevel = () => {
+        this.setState({
+            level: this.state.level + 1,
+            restart: !this.state.restart
+        })
+    }
+
     render() {
-        
+        let game;
+        if (this.state.gameShowing === true) {
+            game = <Game key={this.state.restart} restartLevel={this.restart} currentLevel={this.state.level} lives={this.state.lives} exitLevel={this.exitLevel}/>
+        }
         return (
             <div>
                 <h1>{`Level ${this.state.level}`}</h1>
-                <Game key={this.state.restart} restartLevel={this.restart} lives={this.state.lives}/>
+                {game}
             </div>
             )
     }
