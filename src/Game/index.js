@@ -148,13 +148,18 @@ class Game extends React.Component {
             <div>
                 <div className="Main-Container">
                     <div className="Game-Box">
-                      {level}
-                      <CharacterSprite 
-                          level={this.state.currentLevel}
-                          check={this.checkTile} 
-                          checkForLoot={this.checkLoot}
-                      />
-                      {enemySprites}
+                        <div className="Map">
+                          {level}
+                          <CharacterSprite 
+                              level={this.state.currentLevel}
+                              check={this.checkTile} 
+                              checkForLoot={this.checkLoot}
+                          />
+                          {enemySprites}
+                        </div>
+                        <div className="Story-Box">
+                            <h1>Story Box</h1>
+                        </div>
                     </div>
                     <Character 
                         items={this.state.levelItems} 

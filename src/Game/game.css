@@ -1,16 +1,21 @@
-.Game-Box {
-  max-width: 70%;
-  max-height: 50%;
-  display: table;
-  margin: 0 auto;
-  position: relative;
-}
+/*body {
+  background-image: url(/Leviathan-Backgrounds/level-1.jpg);
+}*/
+
 
 .Main-Container {
+  /*min-width: 896px;*/
+  margin: 30px 0px 30px 30px;
   border: 1px solid purple;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 }
 
+.Game-Box {
+  margin: 0px 30px 0px 0px;
+  border: 2px solid blue;
+  display: table;
+  /*margin: 0 auto;*/
+  position: relative;
+}
 

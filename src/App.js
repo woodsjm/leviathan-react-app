@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import Main from './Main'
+import TopBar from './Header'
+import GameContainer from './GameContainer'
 import Game from './Game'
 
-// Leviathan Front-End
 
 function App() {
 
     return (
         <div className="App">
-            <Main />
+            <GameContainer />
         </div>
     );
 }

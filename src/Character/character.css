@@ -1,7 +1,21 @@
+h3 {
+    color: #00ff9f;
+}
+
+
 #character-box {
-    width: 25%;
+    margin: 0px 0px 0px 30px;
+    min-width: 300px;
     min-height: 100%;
-    border: 2px dashed red;
+    /*opacity: 0.2;*/
+
+    --aug-border: 5px;
+    --aug-inset: 5px;
+    padding: 10px;
+    text-align: center;
+    --aug-border-bg: #0abdc6;
+    /*--aug-inset-bg: #0abdc6;*/
+    --aug-inset-bg: #133e7c;
 }
 
 .inventory-type {

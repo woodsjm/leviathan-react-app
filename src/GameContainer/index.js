@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import InGameMenu from '../InGameMenu'
 import Game from '../Game'
+import './game-container.css'
 import { enemyStart } from '../Levels/Structures/plans.js'
 
-class Main extends React.Component {
+
+class GameContainer extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -12,6 +15,7 @@ class Main extends React.Component {
             gameShowing: true
         }
     }
+
     restart = () => {
         this.setState({
             restart: !this.state.restart
@@ -30,13 +34,20 @@ class Main extends React.Component {
         if (this.state.gameShowing === true) {
             game = <Game key={this.state.restart} restartLevel={this.restart} currentLevel={this.state.level} lives={this.state.lives} exitLevel={this.exitLevel}/>
         }
+
         return (
-            <div>
-                <h1>{`Level ${this.state.level}`}</h1>
-                {game}
+            <div className='Game-Container'>
+
+                <div className='Game-Container-Top'>
+                    <h1> Level 1</h1>
+                </div>
+                <div className='Game-Container-Bottom'>
+                    <InGameMenu />
+                    {game}
+                </div>
             </div>
             )
     }
 }
 
-export default Main
+export default GameContainer

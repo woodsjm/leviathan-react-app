@@ -1,0 +1,20 @@
+.Game-Container {
+    background-color: #0e1111;
+    /*background-image: url(/Leviathan-Backgrounds/level-1.jpg);*/
+    border: 5px solid grey;
+    display: flex;
+    flex-direction: column;
+}
+
+.Game-Container-Top {
+    width: 100%;
+}
+
+.Game-Container-Bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border: 5px solid red;
+}
+
