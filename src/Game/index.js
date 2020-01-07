@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CharacterSprite from '../CharacterSprite'
 import './game.css';
 import { plan, enemyStart, grabEnemies } from '../Levels/Structures/plans.js'
+import constructBoilerPlateNarrative from '../Levels/Narrative/index.js'
 import Level from '../Levels'
 import Character from '../Character' 
 import { items, getItemsToPopulate } from '../Items/items.js'
@@ -48,11 +49,14 @@ class Game extends React.Component {
         }, [])
 
         const enemiesArr = cloneDeep(enemyStart[this.props.currentLevel])
+
+        const beginningMessage = `Welcome to Level ${this.props.currentLevel}`
         
         this.setState({
             currentStructure: plan(this.state.currentLevel),
             levelItems: lootPositions,
-            enemies: enemiesArr
+            enemies: enemiesArr,
+            currentStory: beginningMessage
         })
     }
 
@@ -91,6 +95,10 @@ class Game extends React.Component {
                     levelItems: copy,
                     pickedUpItem: equipment
                 })
+
+
+                this.generateNarrative("loot", equipment.name)
+
                 return 
             }
         }
@@ -133,6 +141,16 @@ class Game extends React.Component {
         return outcomeOfBeingShotAt === 'hit' ? damageGiven : false    
     }
 
+    generateNarrative = (...args) => {
+
+        let narrative = constructBoilerPlateNarrative(...args)
+
+        this.setState({
+            currentStory: narrative
+        })
+
+    }
+
     render() {
         let level;
         if (this.state.currentStructure) {
@@ -142,6 +160,11 @@ class Game extends React.Component {
         let enemySprites;
         if (this.state.enemies) {
             enemySprites = <EnemySprite level={this.state.currentLevel} enemies={this.state.enemies} check={this.checkTile} />
+        }
+
+        let story;
+        if (this.state.currentStory) {
+            story = <h1>{this.state.currentStory}</h1>
         }
 
         return(
@@ -158,7 +181,7 @@ class Game extends React.Component {
                           {enemySprites}
                         </div>
                         <div className="Story-Box">
-                            <h1>Story Box</h1>
+                            {this.state.currentStory}
                         </div>
                     </div>
                     <Character 

@@ -84,10 +84,10 @@ class Character extends React.Component {
             this.props.restartLevel()
         }
         return(
-            <div id='character-box' augmented-ui='tl-clip br-clip exe'>
-                <div>
+            <div className='cb-container' augmented-ui='tl-clip br-clip exe'>
+                <div className='character-box'>
                     <div >
-                        <h3 className="text">Inventory</h3>  
+                        <h3 className="text glitch">Inventory</h3>  
                             <div>
                                 <Weapons weapons={this.state.backpack.weapon} equipWeapon={this.equipWeapon} equippedWeapon={this.state.equippedWeapon}/>
                             </div>
