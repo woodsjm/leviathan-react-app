@@ -1,7 +1,4 @@
 .Game-Container {
-    /*background: linear-gradient(to bottom right, #13242c 40%, #0b1519 70%);*/
-    /*background-image: url(/Leviathan-Backgrounds/level-1.jpg);*/
-    
     border: 5px solid grey;
     display: flex;
     flex-direction: column;
@@ -9,6 +6,8 @@
 
 .Game-Container-Top {
     width: 100%;
+    border: 2px solid green;
+    height: 100px;
 }
 
 .Game-Container-Bottom {

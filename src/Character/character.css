@@ -1,5 +1,5 @@
 h3 {
-    color: white;
+    color: #00ff9f;;
 }
 
 .cb-container {
@@ -7,10 +7,13 @@ h3 {
     margin: 0px 0px 0px 30px;
     --aug-border: 5px;
     --aug-inset: 5px;
-    --aug-inset-bg: white;
+    --aug-inset-bg: black;
     padding: 10px;
     text-align: center;
     --aug-border-bg: #5da1c6;
+
+    opacity: 0.8;
+    background-color: black;
 
 }
 
@@ -46,6 +49,7 @@ h3 {
 }
 
 .slots {
+    background-color: white;
     margin: 1px 2px;
     height: 100px;
     width: 100px;

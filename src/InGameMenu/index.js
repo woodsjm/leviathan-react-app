@@ -6,7 +6,7 @@ const InGameMenu = () => {
     return(
         <div className='In-Game-Menu-Container' augmented-ui='tl-clip br-clip exe'>
             <div className='menu'>
-            Here's the InGameMenu
+                <h1>Ingame Menu</h1>
             </div>
         </div>
         )
