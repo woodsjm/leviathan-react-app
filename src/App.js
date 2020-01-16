@@ -20,11 +20,38 @@ class App extends React.Component {
         }
     }
 
+    handleChange = (event) => {
+        event.preventDefault()
+        this.setState({[event.target.name]: event.target.value});
+    }
+
     handleLink = (event) => {
         event.preventDefault()
         this.setState({
             showRegistration: !this.state.showRegistration
         })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.setState({
+            loggedIn: true,
+            showRegistration: false,
+            showLogin: false
+        })
+    }
+
+    changeUser = (event) => {
+        console.log(event.target.innerHTML)
+        if (event.target.innerHTML === "Change User") {
+            this.setState({
+                loggedIn: false,
+                showLogin: true
+            })
+        }
+        // this.setState({
+        //     logged
+        // })
     }
 
     render() {
@@ -39,10 +66,10 @@ class App extends React.Component {
         }
 
         if (this.state.showLogin) {
-            login = <Login clickedLink={this.handleLink} formText={styling}/>
+            login = <Login clickedLink={this.handleLink} handleSubmit={this.handleSubmit} changeValue={this.handleChange} formText={styling}/>
         }
         if (this.state.loggedIn) {
-            game = <GameContainer />
+            game = <GameContainer changeUser={this.changeUser} />
         }
         
         return (

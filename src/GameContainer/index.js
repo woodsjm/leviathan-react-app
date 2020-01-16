@@ -6,8 +6,8 @@ import { enemyStart } from '../Levels/Structures/plans.js'
 
 
 class GameContainer extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             restart: false,
             lives: 10,
@@ -42,7 +42,7 @@ class GameContainer extends React.Component {
                     <h1 className="app-name glitch"> The Expanse</h1>
                 </div>
                 <div className='Game-Container-Bottom' >
-                    <InGameMenu />
+                    <InGameMenu changeUser={this.props.changeUser}/>
                     {game}
                 </div>
             </div>

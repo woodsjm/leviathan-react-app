@@ -3,10 +3,6 @@ import './login.css'
 import '../GameContainer/game-container.css'
 
 const Login = (props) => {
-     
-
-
-
     return(
         <div>
             <div style={{height: '30px'}}></div>
@@ -24,12 +20,12 @@ const Login = (props) => {
                 <form className="form1">
                     <div>
                         <div>
-                            <input className="un" type="text"  placeholder="Email" />
+                            <input className="un" name="email" type="text"  placeholder="Email" onChange={props.changeValue} />
                         </div>
                         <div>
-                            <input className="pass" type="password"  placeholder="Password" />
+                            <input className="pass" name="password" type="password"  placeholder="Password" onChange={props.changeValue}/>
                         </div>
-                      <a className="submit" >{props.formText[1]}</a>
+                      <a className="submit" onClick={props.handleSubmit}>{props.formText[1]}</a>
                       <p className="forgot" align="center" onClick={props.clickedLink}><a></a>{props.formText[2]}</p>
                     
                     </div>
