@@ -12,20 +12,39 @@ class App extends React.Component {
         this.state = {
             password: '',
             email: '',
-            loggedIn: false
+            loggedIn: false,
+            showLogin: true,
+            showRegistration: false,
+            loginStyling: ["Ship Login", "Login", "Create New Ship"],
+            registrationStyling: ["Build Ship", "Create", "Enter Existing Ship"]
         }
     }
 
-    render() {
-        let game;
-        let login;
+    handleLink = (event) => {
+        event.preventDefault()
+        this.setState({
+            showRegistration: !this.state.showRegistration
+        })
+    }
 
-        if (this.state.loggedIn === false) {
-            login = <Login />
-        } else if (this.state.loggedIn === true) {
-            game = <GameContainer />
+    render() {
+        let login;
+        let game;
+        let styling;
+
+        if (this.state.showRegistration) {
+            styling = this.state.registrationStyling
+        } else {
+            styling = this.state.loginStyling   
         }
 
+        if (this.state.showLogin) {
+            login = <Login clickedLink={this.handleLink} formText={styling}/>
+        }
+        if (this.state.loggedIn) {
+            game = <GameContainer />
+        }
+        
         return (
         <div className="App">
             {login}

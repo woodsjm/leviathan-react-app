@@ -2,15 +2,24 @@ import React from 'react'
 import './login.css'
 import '../GameContainer/game-container.css'
 
-const Login = () => {
+const Login = (props) => {
+     
+
+
+
     return(
         <div>
-            <div>HELLO</div>
+            <div style={{height: '30px'}}></div>
+
+            <div className="header" augmented-ui="b-clip-x exe">
+                <div style={{height: '20px'}}></div>
+                <h1 className="header-text glitch">THE EXPANSE</h1>
+            </div>
 
 
 
-            <div className="main" augmented-ui="r-clip bl-clip exe">
-                <p className="sign glitch" align="center">Ship Login</p>
+            <div className="main" augmented-ui="r-clip tr-clip tl-clip exe">
+                <p className="sign glitch" align="center">{props.formText[0]}</p>
 
                 <form className="form1">
                     <div>
@@ -20,8 +29,8 @@ const Login = () => {
                         <div>
                             <input className="pass" type="password"  placeholder="Password" />
                         </div>
-                      <a className="submit" >Login</a>
-                      <p className="forgot" align="center"><a href="#"></a>Forgot Password?</p>
+                      <a className="submit" >{props.formText[1]}</a>
+                      <p className="forgot" align="center" onClick={props.clickedLink}><a></a>{props.formText[2]}</p>
                     
                     </div>
                 </form>           
