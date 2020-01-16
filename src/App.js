@@ -49,9 +49,6 @@ class App extends React.Component {
                 showLogin: true
             })
         }
-        // this.setState({
-        //     logged
-        // })
     }
 
     render() {
