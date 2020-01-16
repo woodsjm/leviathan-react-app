@@ -170,8 +170,8 @@ class Game extends React.Component {
         return(
             <div>
                 <div className="Main-Container">
-                    <div className="Game-Box">
-                        <div className="Map">
+                    <div className="Game-Box" >
+                        <div className="Map" >
                           {level}
                           <CharacterSprite 
                               level={this.state.currentLevel}
