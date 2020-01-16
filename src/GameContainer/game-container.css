@@ -1,9 +1,6 @@
 .app-name {
     font-size: 550%;
-    
-    /*filter: brightness(110%);*/
 }
-
 
 .Game-Container {
     display: flex;
