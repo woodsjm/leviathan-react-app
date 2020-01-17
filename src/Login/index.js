@@ -20,10 +20,10 @@ const Login = (props) => {
                 <form className="form1">
                     <div>
                         <div>
-                            <input className="un" name="email" type="text"  placeholder="Email" onChange={props.changeValue} />
+                            <input className="un" name="email" type="text"  placeholder="Email" value={props.email} onChange={props.changeValue} />
                         </div>
                         <div>
-                            <input className="pass" name="password" type="password"  placeholder="Password" onChange={props.changeValue}/>
+                            <input className="pass" name="password" type="password"  placeholder="Password" value={props.password} onChange={props.changeValue}/>
                         </div>
                       <a className="submit" onClick={props.handleSubmit}>{props.formText[1]}</a>
                       <p className="forgot" align="center" onClick={props.clickedLink}><a></a>{props.formText[2]}</p>
