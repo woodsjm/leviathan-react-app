@@ -1,18 +1,57 @@
-.menu-text {
+.menu-item {
+  margin: 5px 5px 20px 30px;
+  width: 60%;
+  color: #00ff9f;
+  font-size: 25px;
+  text-align: left;
+  padding: 0px 0px 2px 0px;
+  border-bottom: solid rgba(0, 0, 0, .8);
+}
 
+.menu-item:hover {
+  color: #FFD700;
+  border-bottom: solid #FFD700;
+}
+
+.instructions {
+
+  margin: 0 auto;
+  height: 100%;
+  width: 94%;
+  --aug-border: 1px;
+  --aug-inset-bg: black;
+  padding: 10px;
+  text-align: center;
+  --aug-border-bg: #5da1c6;
+}
+
+.instructions-container {
+  text-align: center;
+  margin: 5px 0px;
+  height: 100%;
+  width: 100%;
+}
+
+
+.nav {
+  color: #00ff9f;
+}
+
+.menu-title {
+  color: #FFD700;
 }
 
 
 .In-Game-Menu-Container {
-
+    color: #00ff9f;
     opacity: 0.8;
     /*background-color: white;*/
 
     display: flex;
     flex-direction: column;
 
-    min-width: 300px;
-    margin: 30px 30px 30px 0px;
+    min-width: 375px;
+    margin: 30px 10px 30px 0px;
     
     
     

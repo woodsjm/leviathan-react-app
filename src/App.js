@@ -13,8 +13,8 @@ class App extends React.Component {
         this.state = {
             password: '',
             email: '',
-            loggedIn: false,
-            showLogin: true,
+            loggedIn: true,
+            showLogin: false,
             showRegistration: false,
             loginStyling: ["Ship Login", "Login", "Create New Ship"],
             registrationStyling: ["Build Ship", "Create", "Enter Existing Ship"],
