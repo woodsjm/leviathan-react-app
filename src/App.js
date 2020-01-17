@@ -34,6 +34,7 @@ class App extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        this.state.showRegistration === true ? this.register() : console.log("login")
         this.setState({
             loggedIn: true,
             showRegistration: false,
@@ -42,7 +43,6 @@ class App extends React.Component {
     }
 
     changeUser = (event) => {
-        console.log(event.target.innerHTML)
         if (event.target.innerHTML === "Change User") {
             this.setState({
                 loggedIn: false,
@@ -51,10 +51,34 @@ class App extends React.Component {
         }
     }
 
+    register = async () => {
+        try {
+          const registerResponse = await fetch(`http://localhost:8000/register`, {
+            method: 'POST',
+            credentials: 'include', 
+            body: JSON.stringify({password: this.state.password, email: this.state.email}),
+            headers: {
+              'Content-Type': 'application/json' 
+            }
+          })
+
+          if(registerResponse.status === 401) {
+            console.log("you are not allowed to do that");
+          }
+
+          const parsedResponse = await registerResponse.json();
+          console.log(parsedResponse)
+
+        } catch(err){
+          console.error(err);
+          return err
+        }
+    }
+    
     render() {
+        let styling;
         let login;
         let game;
-        let styling;
 
         if (this.state.showRegistration) {
             styling = this.state.registrationStyling
@@ -65,16 +89,17 @@ class App extends React.Component {
         if (this.state.showLogin) {
             login = <Login clickedLink={this.handleLink} handleSubmit={this.handleSubmit} changeValue={this.handleChange} formText={styling}/>
         }
+        
         if (this.state.loggedIn) {
             game = <GameContainer changeUser={this.changeUser} />
         }
         
         return (
-        <div className="App">
-            {login}
-            {game}
-        </div>
-    );
+            <div className="App">
+                {login}
+                {game}
+            </div>
+        );
     }
     
 }
