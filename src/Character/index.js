@@ -3,6 +3,8 @@ import Weapons from './Weapons'
 import Medical from './Medical'
 import Vitals from './Vitals'
 import EquippedWeapon from './EquippedWeapon'
+import ReactTypingEffect from 'react-typing-effect';
+import Typewriter from 'typewriter-effect'
 import './character.css'
 
 
@@ -101,10 +103,28 @@ class Character extends React.Component {
                             <div>
                                 <Vitals vitals={this.state.vitals}/>
                             </div>
-                            <div style={{height: '10px'}}></div>
+                            <div style={{height: '16px'}}></div>
                     </div>
                 <div className='Story-Box-container'>
                     <div className='Story-Box' augmented-ui='b-clip exe'>
+                        <Typewriter
+                          onInit={(typewriter) => {
+                                typewriter.changeDelay(150).typeString("Welcome to Level One of Leviathan Wakes...")
+                                .pauseFor(1000)
+                                .typeString("<br display='block' margin='0px 0px'></br>")
+                                  // .callFunction(() => {
+                                  //   console.log('String typed out!');
+                                  // })
+                                  .pauseFor(2000)
+                                  .typeString('Move around using the arrow keys.')
+                                  .pauseFor(4000)
+                                  .deleteAll()
+                                  .callFunction(() => {
+                                    console.log('All strings were deleted');
+                                  })
+                                  .start();
+                              }}
+                           />
                     </div>
                 </div>
                     
