@@ -76,6 +76,9 @@ h1 {
     --aug-border-bg: #5da1c6;
 }
 
+#equipped-medical:hover {
+  border: 1px solid #00ff9f;
+}
 
 .slots {
     background-color: rgba(255, 255, 255, 0.15);

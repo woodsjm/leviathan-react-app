@@ -91,6 +91,32 @@ class Character extends React.Component {
         }
     }
 
+    handleMedicalItem = (idx) => {
+        console.log("using item!")
+        if (this.state.backpack.medical[idx].name === "MedKit") {
+            this.useMedPack(idx)
+        }
+    }
+
+    useMedPack = (idx) => {
+        let health = this.state.vitals.health
+        if (health >= 100) {
+            return
+        } else if (health > 0 && health < 100) {
+            let state = this.state
+            state.vitals.health = state.vitals.health + state.backpack.medical[idx].heal
+            state.backpack.medical[idx] = {[idx]: null}
+            console.log("Here is the new state", state)
+            this.setState({state})
+
+            // health = vitals.health + this.state.backpack.medical[idx].heal
+            // medical[idx] = null
+            
+            
+
+        }
+    }
+
     render(props) {
         if (this.state.vitals.health <= 0) {
             this.props.restartLevel()
@@ -108,7 +134,7 @@ class Character extends React.Component {
                             </div>
                             <div style={{height: '10px'}}></div>
                             <div>
-                                <Medical medical={this.state.backpack.medical} />
+                                <Medical useMedicalItem={this.handleMedicalItem} medical={this.state.backpack.medical} />
                             </div>
                             <div>
                                 <Vitals vitals={this.state.vitals}/>
