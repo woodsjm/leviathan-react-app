@@ -7,6 +7,16 @@ import ReactTypingEffect from 'react-typing-effect';
 import Typewriter from 'typewriter-effect'
 import './character.css'
 
+const messages = {
+    1: {
+        first: "Welcome to Level One of Leviathan Wakes...",
+        second: "Move around using the arrow keys."
+        },
+    2: {
+        first: "You made it to Level Two....",
+        second: "Comeback later for new levels."
+    }
+}
 
 class Character extends React.Component {
     constructor(props) {
@@ -81,7 +91,7 @@ class Character extends React.Component {
         }
     }
 
-    render() {
+    render(props) {
         if (this.state.vitals.health <= 0) {
             this.props.restartLevel()
         }
@@ -109,14 +119,14 @@ class Character extends React.Component {
                     <div className='Story-Box' augmented-ui='b-clip exe'>
                         <Typewriter
                           onInit={(typewriter) => {
-                                typewriter.changeDelay(150).typeString("Welcome to Level One of Leviathan Wakes...")
+                                typewriter.changeDelay(150).typeString(messages[this.props.level].first)
                                 .pauseFor(1000)
                                 .typeString("<br display='block' margin='0px 0px'></br>")
                                   // .callFunction(() => {
                                   //   console.log('String typed out!');
                                   // })
                                   .pauseFor(2000)
-                                  .typeString('Move around using the arrow keys.')
+                                  .typeString(messages[this.props.level].second)
                                   .pauseFor(4000)
                                   .deleteAll()
                                   .callFunction(() => {

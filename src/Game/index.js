@@ -182,6 +182,7 @@ class Game extends React.Component {
                         </div>
                     </div>
                     <Character 
+                        level={this.state.currentLevel}
                         items={this.state.levelItems} 
                         pickedUpItem={this.state.pickedUpItem}
                         timeToFight={this.state.timeToFight}
