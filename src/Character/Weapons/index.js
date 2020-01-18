@@ -25,7 +25,7 @@ const Weapons = (props) => {
         }    
     })
     return(
-        <div className='inventory-type'>
+        <div className='inventory-type' augmented-ui='tl-clip tr-clip bl-clip br-clip exe'>
             {gunList}   
         </div>
     )

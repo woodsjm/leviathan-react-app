@@ -3,6 +3,7 @@ import './equippedWeapon.css'
 
 const EquippedWeapon = (props) => {
     let weapon = props.weapons[props.equippedWeapon]
+    console.log(weapon)
     let damage = 0;
     let accuracy = 0;
 
@@ -19,7 +20,7 @@ const EquippedWeapon = (props) => {
                 </div>
             </div>
             <div className='container'>
-                <div className='weapon-stats-box'>
+                <div className='weapon-stats-box' augmented-ui='t-clip b-clip exe'>
                     <div>
                         <p>Damage: {`${damage}`}</p>
                     </div>

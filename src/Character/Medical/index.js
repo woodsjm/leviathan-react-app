@@ -20,7 +20,7 @@ const Medical = (props) => {
         }    
     })
     return(
-        <div className='inventory-type'>
+        <div className='inventory-type' augmented-ui='tl-clip tr-clip br-clip bl-clip exe'>
             {medList}   
         </div>
     )

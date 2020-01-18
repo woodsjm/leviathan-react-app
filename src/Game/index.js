@@ -180,9 +180,6 @@ class Game extends React.Component {
                           />
                           {enemySprites}
                         </div>
-                        <div className="Story-Box">
-                            {this.state.currentStory}
-                        </div>
                     </div>
                     <Character 
                         items={this.state.levelItems} 

@@ -87,23 +87,26 @@ class Character extends React.Component {
             <div className='cb-container' augmented-ui='tl-clip br-clip exe'>
                 <div className='character-box'>
                     <div >
-                        <h3 className="text">Inventory</h3>  
+                        <h1 className="text">INVENTORY</h1>  
                             <div>
                                 <Weapons weapons={this.state.backpack.weapon} equipWeapon={this.equipWeapon} equippedWeapon={this.state.equippedWeapon}/>
                             </div>
                             <div>
                                 <EquippedWeapon equippedWeapon={this.state.equippedWeapon} weapons={this.state.backpack.weapon}/>
                             </div>
+                            <div style={{height: '10px'}}></div>
                             <div>
                                 <Medical medical={this.state.backpack.medical} />
                             </div>
                             <div>
                                 <Vitals vitals={this.state.vitals}/>
                             </div>
-                            <div>
-                                <h3>Lives Remaining: {this.props.lives}</h3>
-                            </div>
+                            <div style={{height: '10px'}}></div>
                     </div>
+                <div className='Story-Box-container'>
+                    <div className='Story-Box' augmented-ui='b-clip exe'>
+                    </div>
+                </div>
                     
                 </div>
             </div>
@@ -112,3 +115,7 @@ class Character extends React.Component {
 }
 
 export default Character
+
+// <div>
+// <h3>Lives Remaining: {this.props.lives}</h3>
+// </div>

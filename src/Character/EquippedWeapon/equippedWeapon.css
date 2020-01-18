@@ -16,18 +16,24 @@ p {
     justify-content: center
 }
 
-.container vitals-stats-box {
+.container weapon-stats-box {
     display: block;
     margin: auto;
 }
 
-.vitals-stats-box {
+.weapon-stats-box {
     width: 80%;
     height: 90%;
-    border: 1px solid purple;
     margin: 5px 5px;
     display: flex;
     justify-content: space-around;
+
+    --aug-border: 1px;
+    --aug-inset: 5px;
+    --aug-inset-bg: rgba(0, 0, 0, 0.0);
+    padding: 5px;
+    text-align: center;
+    --aug-border-bg: purple;
 }
 
 #title {

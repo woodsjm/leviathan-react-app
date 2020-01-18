@@ -23,7 +23,7 @@ const Instructions = () => {
                     </div>
 
                     <div>
-                        <p style={{fontSize: '25px', textAlign: 'center', color: '#8C55AA', bottom: '0'}}>Loot Box</p>
+                        <p style={{fontSize: '25px', textAlign: 'center', color: 'purple', bottom: '0'}}>Loot Box</p>
                     </div>
 
                     <div style={{margin: '10px 0px'}}></div>
@@ -35,7 +35,7 @@ const Instructions = () => {
                     </div>
 
                     <div>
-                        <p style={{fontSize: '25px', textAlign: 'center', color: '#8C55AA', bottom: '0'}}>Level Exit</p>
+                        <p style={{fontSize: '25px', textAlign: 'center', color: 'purple', bottom: '0'}}>Level Exit</p>
                     </div>
 
                 </div>
