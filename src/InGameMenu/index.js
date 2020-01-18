@@ -13,6 +13,10 @@ class InGameMenu extends React.Component {
         }
     }
 
+    toggleInstructions = () => {
+        this.setState({showInstructions: !this.state.showInstructions})
+    }
+
     render(props) {
         let instructions;
         if (this.state.showInstructions) {
@@ -31,7 +35,7 @@ class InGameMenu extends React.Component {
                     <div className="menu-item" >
                         Log Out
                     </div>
-                    <div className="menu-item" >
+                    <div className="menu-item" onClick={this.toggleInstructions}>
                         Instructions
                     </div>
                 </div>
@@ -46,6 +50,3 @@ class InGameMenu extends React.Component {
 }
 
 export default InGameMenu
-
-// <h1>Menu</h1>
-// <h3 onClick={props.changeUser}>Change User</h3>

@@ -1,25 +1,28 @@
 .menu-item {
+  cursor: default;
   margin: 5px 5px 20px 30px;
   width: 60%;
   color: #00ff9f;
   font-size: 25px;
   text-align: left;
   padding: 0px 0px 2px 0px;
-  border-bottom: solid rgba(0, 0, 0, .8);
+  border-bottom: solid rgba(0, 0, 0, 0.0);
 }
 
+
+
 .menu-item:hover {
+  cursor: default;
   color: #FFD700;
   border-bottom: solid #FFD700;
 }
 
 .instructions {
-
   margin: 0 auto;
   height: 100%;
-  width: 94%;
+  width: 325px;
   --aug-border: 1px;
-  --aug-inset-bg: black;
+  --aug-inset-bg: rgba(0, 0, 0, 0.0);
   padding: 10px;
   text-align: center;
   --aug-border-bg: #5da1c6;
@@ -39,12 +42,13 @@
 
 .menu-title {
   color: #FFD700;
+  background-color: rgba(0, 0, 0, 0.0);
 }
 
 
 .In-Game-Menu-Container {
     color: #00ff9f;
-    opacity: 0.8;
+    /*opacity: 0.8;*/
     /*background-color: white;*/
 
     display: flex;
@@ -57,12 +61,12 @@
     
     --aug-border: 5px;
     --aug-inset: 5px;
-    --aug-inset-bg: black;
+    --aug-inset-bg: rgba(0, 0, 0, 0.0);
     padding: 10px;
     text-align: center;
     --aug-border-bg: #5da1c6;
 
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .menu.crt {

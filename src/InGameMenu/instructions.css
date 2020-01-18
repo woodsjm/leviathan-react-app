@@ -1,0 +1,17 @@
+.img-container {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #8C55AA;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+}
+
+.loot-img {
+    background-image: url(/Leviathan-Tiles/space.png);
+}
+
+.exit-img {
+    background-image: url(/Leviathan-Tiles/Exit/escape-hatch.png);
+}
