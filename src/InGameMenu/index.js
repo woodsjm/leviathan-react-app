@@ -9,7 +9,7 @@ class InGameMenu extends React.Component {
         super(props)
         this.state = {
             activeItem: 'account',
-            showInstructions: true
+            showInstructions: false
         }
     }
 
@@ -27,12 +27,7 @@ class InGameMenu extends React.Component {
                 <h1 className='menu-title'>MENU</h1>
 
                 <div >
-                    
-                    <div className="menu-item" >
-                        New Account
-                    </div>
-
-                    <div className="menu-item" >
+                    <div className="menu-item" onClick={this.props.logout}>
                         Log Out
                     </div>
                     <div className="menu-item" onClick={this.toggleInstructions}>

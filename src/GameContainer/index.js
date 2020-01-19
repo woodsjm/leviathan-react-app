@@ -42,7 +42,7 @@ class GameContainer extends React.Component {
                     <h1 className="app-name glitch"> The Expanse</h1>
                 </div>
                 <div className='Game-Container-Bottom' >
-                    <InGameMenu changeUser={this.props.changeUser}/>
+                    <InGameMenu changeUser={this.props.changeUser} logout={this.props.logout}/>
                     {game}
                 </div>
             </div>

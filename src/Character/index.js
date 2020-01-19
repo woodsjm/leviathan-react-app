@@ -3,7 +3,6 @@ import Weapons from './Weapons'
 import Medical from './Medical'
 import Vitals from './Vitals'
 import EquippedWeapon from './EquippedWeapon'
-import ReactTypingEffect from 'react-typing-effect';
 import Typewriter from 'typewriter-effect'
 import './character.css'
 

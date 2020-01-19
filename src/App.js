@@ -13,17 +13,26 @@ class App extends React.Component {
         this.state = {
             password: '',
             email: '',
-            loggedIn: true,
-            showLogin: false,
+            userId: null,
+
+            loggedIn: false,
+            showLogin: true,
             showRegistration: false,
+
             loginStyling: ["Ship Login", "Login", "Create New Ship"],
             registrationStyling: ["Build Ship", "Create", "Enter Existing Ship"],
+
+            loginModalMessage: 'That is not a valid email address or password. Would you like to register instead?',
+            loginRedirect: 'Register',
+            registrationModalMessage: 'It looks like this email address is already registered. Would you like to try login instead?',
+            registrationRedirect: 'Login',
             // Test conditional rendering of required async data
             loading: true,
             showAlert: false
         }
     }
 
+    // ?? Consider requirements for changing user and logging out being separate ??
     changeUser = (event) => {
         if (event.target.innerHTML === "Change User") {
             this.setState({
@@ -61,6 +70,20 @@ class App extends React.Component {
         }
     }
 
+    logout = async () => {
+        try {
+            const logoutResponse = await fetch('http://localhost:8000/logout', {
+            credentials: 'include'        
+            })
+
+            const parsed = await logoutResponse.json()
+            console.log(parsed);
+        } catch (error) {
+            console.error(error)
+            return error
+        }
+    }
+
     login = async () => {
         try {
             const loginResponse = await fetch(`http://localhost:8000/login`, {
@@ -80,6 +103,8 @@ class App extends React.Component {
                 this.setState(() => {
                     return {
                       ...parsedResponse.data,
+                      email: '',
+                      password: '',
                       loading: false,
                       loggedIn: true,
                       showRegistration: false,
@@ -98,6 +123,18 @@ class App extends React.Component {
     handleChange = (event) => {
         event.preventDefault()
         this.setState({[event.target.name]: event.target.value});
+    }
+
+    handleLogOut = (event) => {
+        this.logout()
+        if (event.target.innerHTML === "Log Out") {
+            this.setState({
+                loggedIn: false,
+                showLogin: true,
+                // Test conditional rendering of required async data
+                loading: true
+            })
+        }
     }
 
     handleLink = (event) => {
@@ -137,6 +174,8 @@ class App extends React.Component {
                 this.setState(() => {
                     return {
                       ...parsedResponse.data,
+                      email: '',
+                      password: '',
                       loading: false,
                       loggedIn: true,
                       showRegistration: false,
@@ -158,11 +197,38 @@ class App extends React.Component {
     }
     
     render() {
+        // ----Alert Variables----
+        let alert;
+        let modalMessage;
+        let redirect;
+        // ***********************
+  
+        // --Non-Alert Variables--
         let styling;
         let login;
         let game;
-        let alert;
+        // ***********************
 
+        // ----Alert Conditionals----
+        if (this.state.showRegistration) {
+            modalMessage = this.state.registrationModalMessage
+            redirect = this.state.registrationRedirect
+        } else if (this.state.showLogin) {
+            modalMessage =  this.state.loginModalMessage
+            redirect = this.state.loginRedirect
+        }
+
+        if (this.state.showAlert) {
+            alert = <Alert 
+                        open={this.state.showAlert} 
+                        closeAlert={this.closeAlert}
+                        modalMessage={modalMessage}
+                        redirect={redirect}
+                    />
+        }
+        // **************************
+
+        // --Non-Alert Conditionals--
         if (this.state.showRegistration) {
             styling = this.state.registrationStyling
         } else {
@@ -181,17 +247,10 @@ class App extends React.Component {
         } 
 
         if (this.state.loggedIn) {
-            game = <GameContainer changeUser={this.changeUser} />
+            game = <GameContainer changeUser={this.changeUser} logout={this.handleLogOut}/>
         }
+        // *************************
 
-        if (this.state.showAlert) {
-            alert = <Alert 
-                        open={this.state.showAlert} 
-                        closeAlert={this.closeAlert}
-                        login={this.state.showLogin}
-                        registration={this.state.showRegistration}
-                    />
-        }
         return (
             <div className="App">
                 {alert}
