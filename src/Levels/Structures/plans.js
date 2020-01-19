@@ -27,18 +27,45 @@ hg***?*&**qr
 *&*****&****
 ****&**&**&*
 *&*****&****
+****&**&**&*`,
+
+    3: `
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+`,
+
+    4: `
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
+****&**&**&*
+*&*****&****
 ****&**&**&*
 `
 }
 
 // Starting positions for each level
-const startPos = {
-    1: {top: 0, left: 0},
-    2: {top: 0, left: 1}
-}
+const startPos = {1: {top: 0, left: 0}, 2: {top: 0, left: 0}, 3: {top: 0, left: 0}}
 
 const enemyStart = {
-    1: [{top: 9, left: 4, health: 100, damage: 10, accuracy: 20}, {top: 7, left: 6, health: 100, damage: 10, accuracy: 20}]
+    1: [{top: 9, left: 4, health: 100, damage: 10, accuracy: 20}, {top: 7, left: 6, health: 100, damage: 10, accuracy: 20}],
+    2: [{top: 9, left: 4, health: 100, damage: 10, accuracy: 20}, {top: 7, left: 6, health: 100, damage: 10, accuracy: 20}]
 }
 
 const plan = (level) => {

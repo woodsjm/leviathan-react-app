@@ -18,21 +18,38 @@ class Game extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            // timeToFight: false,
+            // pickedUpItem: null,
+            // inventoryChanges: false,
+            // currentEnemy: {x: null, y: null},
+            // enemyTiles: [],
+            // currentLevel: this.props.currentLevel,
+            // completedLevel: false
+
             timeToFight: false,
             pickedUpItem: null,
-            currentLevel: this.props.currentLevel,
+            currentLevel: 0,
             inventoryChanges: false,
             currentEnemy: {x: null, y: null},
             enemyTiles: [],
             enemies: null,
-            completedLevel: false 
+            completedLevel: false
+
+            // timeToFight: null,
+            // pickedUpItem: null,
+            // inventoryChanges: null,
+            // currentEnemy: {x: null, y: null},
+            // enemyTiles: null,
+            // currentLevel: null,
+            // completedLevel: null, 
+            
         }
         this.checkTile = this.checkTile.bind(this)
         this.checkLoot = this.checkLoot.bind(this)
     }
 
-    componentDidMount() {
-        const currentStructure = plan(this.state.currentLevel)
+    componentDidMount(props) {
+        const currentStructure = plan(this.props.currentLevel)
         let itemToPopulate = 0
         let itemsInLevel = getItemsToPopulate()
 
@@ -49,15 +66,41 @@ class Game extends React.Component {
         }, [])
 
         const enemiesArr = cloneDeep(enemyStart[this.props.currentLevel])
-
-        const beginningMessage = `Welcome to Level ${this.props.currentLevel}`
-        
         this.setState({
-            currentStructure: plan(this.state.currentLevel),
+            currentStructure: plan(this.props.currentLevel),
             levelItems: lootPositions,
             enemies: enemiesArr,
-            currentStory: beginningMessage
+            currentLevel: this.props.currentLevel    
         })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.reset !== this.props.reset) {
+            const currentStructure = plan(this.props.currentLevel)
+            let itemToPopulate = 0
+            let itemsInLevel = getItemsToPopulate()
+
+            const lootPositions = currentStructure.reduce((arr, column, yIdx) => {
+                column.reduce((acc, value, xIdx) => {
+                    if (value === '?') {
+                        let obj = {x: xIdx, y: yIdx, item: itemsInLevel[itemToPopulate]}
+                        arr.push(obj)
+                        itemToPopulate++   
+                    } 
+                    return
+                }, 0)
+                return arr
+            }, [])
+
+            const enemiesArr = cloneDeep(enemyStart[this.props.currentLevel])
+            this.setState({
+                currentStructure: plan(this.props.currentLevel),
+                levelItems: lootPositions,
+                enemies: enemiesArr,
+                currentLevel: this.props.currentLevel,
+                completedLevel: false
+            })
+        }
     }
 
     checkTile = (x, y) => {
@@ -67,6 +110,12 @@ class Game extends React.Component {
         }
 
         const enemies = this.state.enemies
+        // Handle movement of an unconstructed level
+        if (enemies === undefined || enemies === null) {
+            return false
+        }
+
+
         for (let i = 0; i < enemies.length; i++) {
             if (enemies[i]['left'] === x && enemies[i]['top'] === y) { 
                 this.fight(i)
@@ -77,7 +126,7 @@ class Game extends React.Component {
         if ((s[y][x] === "*") || (s[y][x] === "&") || (s[y][x] === "?")) {
             return true
         } else if ((s[y][x] === "z") && (this.state.completedLevel === true)) {
-            this.props.exitLevel()
+            this.props.exitLevel(this.state)
             return false
         } else {
             return false
@@ -153,9 +202,18 @@ class Game extends React.Component {
 
     render() {
         let level;
+        let characterSprite;
         if (this.state.currentStructure) {
             level = <Level structure={this.state.currentStructure} handleClick={this.handleClick} />
         } 
+
+        if (this.state.currentLevel) {
+            characterSprite = <CharacterSprite 
+                                  level={this.state.currentLevel}
+                                  check={this.checkTile} 
+                                  checkForLoot={this.checkLoot}
+                                />
+        }
 
         let enemySprites;
         if (this.state.enemies) {
@@ -173,11 +231,7 @@ class Game extends React.Component {
                     <div className="Game-Box" >
                         <div className="Map" >
                           {level}
-                          <CharacterSprite 
-                              level={this.state.currentLevel}
-                              check={this.checkTile} 
-                              checkForLoot={this.checkLoot}
-                          />
+                          {characterSprite}
                           {enemySprites}
                         </div>
                     </div>

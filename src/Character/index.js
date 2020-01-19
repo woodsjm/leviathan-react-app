@@ -117,6 +117,8 @@ class Character extends React.Component {
     }
 
     render(props) {
+        
+
         if (this.state.vitals.health <= 0) {
             this.props.restartLevel()
         }
@@ -144,21 +146,21 @@ class Character extends React.Component {
                     <div className='Story-Box' augmented-ui='b-clip exe'>
                         <Typewriter
                           onInit={(typewriter) => {
-                                typewriter.changeDelay(150).typeString(messages[this.props.level].first)
-                                .pauseFor(1000)
-                                .typeString("<br display='block' margin='0px 0px'></br>")
-                                  // .callFunction(() => {
-                                  //   console.log('String typed out!');
-                                  // })
-                                  .pauseFor(2000)
-                                  .typeString(messages[this.props.level].second)
-                                  .pauseFor(4000)
-                                  .deleteAll()
-                                  .callFunction(() => {
-                                    console.log('All strings were deleted');
-                                  })
-                                  .start();
-                              }}
+
+                                    typewriter.changeDelay(150).typeString(messages[this.props.level].first)
+                                    .pauseFor(1000)
+                                    .typeString("<br display='block' margin='0px 0px'></br>")
+                                      // .callFunction(() => {
+                                      //   console.log('String typed out!');
+                                      // })
+                                      .pauseFor(2000)
+                                      .typeString(messages[this.props.level].second)
+                                      .pauseFor(2000)
+                                      .deleteAll()
+                                      .callFunction(() => {
+                                        console.log('All strings were deleted');
+                                      })
+                                      .start()}}
                            />
                     </div>
                 </div>

@@ -15,7 +15,9 @@ const Level = (props) => {
 
     let levelStructure = props.structure
     let y = 12
-    let x = 0 
+    let x = 0
+
+    console.log("Here props.structure: ", levelStructure) 
 
     const tiles = levelStructure.map(row => {
         return (
@@ -34,6 +36,7 @@ const Level = (props) => {
                     x = 0
                 }
                 x += 1
+                
                 return <div style={tileStyle} data-tile={tileTypes[imageType]} data-x={x} data-y={y} onClick={props.handleClick}></div>
             })    
         )   

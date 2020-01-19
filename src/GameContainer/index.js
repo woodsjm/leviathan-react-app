@@ -12,7 +12,7 @@ class GameContainer extends React.Component {
             restart: false,
             lives: 10,
             level: 1,
-            gameShowing: true
+            gameShowing: true,
         }
     }
 
@@ -22,17 +22,22 @@ class GameContainer extends React.Component {
         })
     }
 
-    exitLevel = () => {
-        this.setState({
-            level: this.state.level + 1,
-            restart: !this.state.restart
-        })
+    exitLevel = (childState) => {
+        if (childState.completedLevel === true) {
+            this.setState(state => ({
+                level: state.level + 1,
+                restart: !state.restart
+            }));
+            return
+        } else {
+            return
+        }
     }
 
     render() {
         let game;
         if (this.state.gameShowing === true) {
-            game = <Game key={this.state.restart} restartLevel={this.restart} currentLevel={this.state.level} lives={this.state.lives} exitLevel={this.exitLevel}/>
+            game = <Game reset={this.state.restart} restartLevel={this.restart} currentLevel={this.state.level} lives={this.state.lives} exitLevel={this.exitLevel}/>
         }
 
         return (
