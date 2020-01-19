@@ -15,8 +15,8 @@ class App extends React.Component {
             email: '',
             userId: null,
 
-            loggedIn: false,
-            showLogin: true,
+            loggedIn: true,
+            showLogin: false,
             showRegistration: false,
 
             loginStyling: ["Ship Login", "Login", "Create New Ship"],
@@ -72,7 +72,7 @@ class App extends React.Component {
 
     logout = async () => {
         try {
-            const logoutResponse = await fetch('http://localhost:8000/logout', {
+            const logoutResponse = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
             credentials: 'include'        
             })
 
@@ -86,7 +86,7 @@ class App extends React.Component {
 
     login = async () => {
         try {
-            const loginResponse = await fetch(`http://localhost:8000/login`, {
+            const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify({password: this.state.password, email: this.state.email}),
@@ -157,7 +157,7 @@ class App extends React.Component {
 
     register = async () => {
         try {
-            const registerResponse = await fetch(`http://localhost:8000/register`, {
+            const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
                 credentials: 'include', 
                 body: JSON.stringify({password: this.state.password, email: this.state.email}),

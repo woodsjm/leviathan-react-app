@@ -9,8 +9,10 @@ import { items, getItemsToPopulate } from '../Items/items.js'
 import EnemySprite from '../EnemySprite'
 import cloneDeep from 'lodash/cloneDeep'
 
-// Import chancejs library
-const Chance = require('chance')
+import Chance from 'chance'
+
+//Import chancejs library
+// const Chance = require('chance')
 let chance = new Chance()
 
 
