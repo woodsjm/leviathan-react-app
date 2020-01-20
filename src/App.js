@@ -12,6 +12,7 @@ class App extends React.Component {
     constructor() {
         super()
         this.state = {
+            account: {password: '', email: ''},
             password: '',
             email: '',
             userId: null,
@@ -85,12 +86,12 @@ class App extends React.Component {
         }
     }
 
-    login = async () => {
+    login = async (data) => {
         try {
             const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
                 method: 'POST',
                 credentials: 'include',
-                body: JSON.stringify({password: this.state.password, email: this.state.email}),
+                body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -123,6 +124,7 @@ class App extends React.Component {
 
     handleChange = (event) => {
         event.preventDefault()
+        console.log(event.target)
         this.setState({[event.target.name]: event.target.value});
     }
 
@@ -149,19 +151,44 @@ class App extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+
         if (this.state.showRegistration === true) {
-            this.register()
+
+            const register = this.register(this.state);
+
+            register.then((data) => {
+              console.log(data, "HERE IS THE DATA IN THE REGISTER COMPONENET")
+              if(data.status.message === 'Success'){
+                console.log("SUCCESSFUL REGISTRATION!")
+              } else {
+                console.log(data)
+              }
+            }).catch((err) => {
+              console.log(err)
+            })
+
         } else if (this.state.showRegistration === false) {
-            this.login()
+            const login = this.login(this.state);
+
+            login.then((data) => {
+              console.log(data, "HERE IS THE DATA IN THE LOGIN COMPONENET")
+              if(data.status.message === 'Success'){
+                console.log("SUCCESSFUL REGISTRATION!")
+              } else {
+                console.log(data)
+              }
+            }).catch((err) => {
+              console.log(err)
+            })
         }
     }
 
-    register = async () => {
+    register = async (data) => {
         try {
             const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
                 credentials: 'include', 
-                body: JSON.stringify({password: this.state.password, email: this.state.email}),
+                body: JSON.stringify(data),
                 headers: {
                   'Content-Type': 'application/json' 
                 }
