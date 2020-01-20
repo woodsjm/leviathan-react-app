@@ -15,7 +15,7 @@ const Login = (props) => {
 
 
 
-            <div className="main" augmented-ui="tr-clip tl-clip exe">
+            <div className="main" >
                 <p className="sign glitch" align="center">{props.formText[0]}</p>
 
                 <form className="form1">
