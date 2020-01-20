@@ -8,7 +8,7 @@ const Vitals = (props) => {
     return(
         <div className='box'>
             <div className='title-box'>
-                <div className='title'>
+                <div className='title' id="title-name">
                     Player Vitals
                 </div>
             </div>

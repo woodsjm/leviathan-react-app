@@ -38,8 +38,9 @@ p {
     --aug-border-bg: purple;
 }
 
-#title {
-    position: absolute;
-    bottom: 0;
+#title-words {
+    /*position: absolute;
+    bottom: 0;*/
+    color: #00ff9f;
 }
 
