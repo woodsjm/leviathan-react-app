@@ -44,7 +44,7 @@ class GameContainer extends React.Component {
         return (
             <div className='Game-Container' >
 
-                <div className='Game-Container-Top' augmented-ui='tl-clip br-clip exe'>
+                <div className='Game-Container-Top' >
                     <h1 className="app-name glitch"> The Expanse</h1>
                 </div>
                 <div className='Game-Container-Bottom' >

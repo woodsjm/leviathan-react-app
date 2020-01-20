@@ -124,7 +124,7 @@ class Character extends React.Component {
             this.props.restartLevel()
         }
         return(
-            <div className='cb-container' augmented-ui='tl-clip br-clip exe'>
+            <div className='cb-container' >
                 <div className='character-box'>
                     <div >
                         <h1 className="text">INVENTORY</h1>  
@@ -144,8 +144,9 @@ class Character extends React.Component {
                             <div style={{height: '16px'}}></div>
                     </div>
                 <div className='Story-Box-container'>
-                    <div className='Story-Box' augmented-ui='b-clip exe'>
-                        <Typewriter
+                    <div className='Story-Box'>
+
+                            <Typewriter
                           onInit={(typewriter) => {
 
                                     typewriter.changeDelay(150).typeString(messages[this.props.level].first)
@@ -163,6 +164,7 @@ class Character extends React.Component {
                                       })
                                       .start()}}
                            />
+                        
                     </div>
                 </div>
                     

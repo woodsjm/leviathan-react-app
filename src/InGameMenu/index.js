@@ -23,7 +23,7 @@ class InGameMenu extends React.Component {
             instructions = <Instructions />
         }
         return(
-            <div className='In-Game-Menu-Container' augmented-ui='tl-clip br-clip exe'>
+            <div className='In-Game-Menu-Container' >
                 <h1 className='menu-title'>MENU</h1>
 
                 <div >

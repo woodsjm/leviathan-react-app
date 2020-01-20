@@ -24,18 +24,19 @@ p {
 }
 
 .weapon-stats-box {
+    border: 1px solid purple;
     width: 80%;
     height: 90%;
     margin: 5px 5px;
     display: flex;
     justify-content: space-around;
 
-    --aug-border: 1px;
+    /*--aug-border: 1px;
     --aug-inset: 5px;
-    --aug-inset-bg: rgba(0, 0, 0, 0.0);
+    --aug-inset-bg: rgba(0, 0, 0, 0.0);*/
     padding: 5px;
     text-align: center;
-    --aug-border-bg: purple;
+    /*--aug-border-bg: purple;*/
 }
 
 #title-words {

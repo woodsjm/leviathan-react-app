@@ -18,14 +18,15 @@
 }
 
 .instructions {
+  border: 1px solid #5da1c6;
   margin: 0 auto;
   height: 100%;
   width: 325px;
-  --aug-border: 1px;
-  --aug-inset-bg: rgba(0, 0, 0, 0.0);
+  /*--aug-border: 1px;*/
+  /*--aug-inset-bg: rgba(0, 0, 0, 0.0);*/
   padding: 10px;
   text-align: center;
-  --aug-border-bg: #5da1c6;
+  /*--aug-border-bg: #5da1c6;*/
 }
 
 .instructions-container {
@@ -48,6 +49,7 @@
 
 .In-Game-Menu-Container {
     color: #00ff9f;
+    border: 5px solid #5da1c6;
     /*opacity: 0.8;*/
     /*background-color: white;*/
 
@@ -59,9 +61,9 @@
     
     
     
-    --aug-border: 5px;
+    /*--aug-border: 5px;
     --aug-inset: 5px;
-    --aug-inset-bg: rgba(0, 0, 0, 0.0);
+    --aug-inset-bg: rgba(0, 0, 0, 0.0);*/
     padding: 10px;
     text-align: center;
     --aug-border-bg: #5da1c6;
