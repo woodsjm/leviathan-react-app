@@ -21,7 +21,7 @@ const EquippedWeapon = (props) => {
                 </div>
             </div>
             <div className='container'>
-                <div className='weapon-stats-box' augmented-ui='t-clip b-clip exe'>
+                <div className='weapon-stats-box' >
                     <div>
                         <p>Damage: {`${damage}`}</p>
                     </div>

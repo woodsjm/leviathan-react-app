@@ -13,7 +13,7 @@ const Vitals = (props) => {
                 </div>
             </div>
             <div className='container'>
-                <div className='vitals-stats-box' augmented-ui='t-clip b-clip exe'>
+                <div className='vitals-stats-box' >
                     <div>
                         <p>Health: {`${health}`}</p>
                     </div>

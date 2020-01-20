@@ -8,14 +8,14 @@ const Login = (props) => {
         <div>
             <div style={{height: '30px'}}></div>
 
-            <div className="header" augmented-ui="b-clip-x exe">
+            <div className="header" >
                 <div style={{height: '20px'}}></div>
                 <h1 className="header-text glitch">THE EXPANSE</h1>
             </div>
 
 
 
-            <div className="main" augmented-ui="r-clip tr-clip tl-clip exe">
+            <div className="main" augmented-ui="tr-clip tl-clip exe">
                 <p className="sign glitch" align="center">{props.formText[0]}</p>
 
                 <form className="form1">
