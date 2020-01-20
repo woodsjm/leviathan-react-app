@@ -158,7 +158,7 @@ class App extends React.Component {
 
     register = async () => {
         try {
-            const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
+            const registerResponse = await fetch(`${'https://leviathan-flask-api.herokuapp.com'}/register`, {
                 method: 'POST',
                 credentials: 'include', 
                 body: JSON.stringify({password: this.state.password, email: this.state.email}),
