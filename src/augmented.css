@@ -252,7 +252,7 @@
   --aug-r: 15px; /* clip depth */
   --aug-_RWidth: var(--aug-r-width, var(--aug-r));
   --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
-  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2)) + var(--aug-r-offset, 0px)));
+  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2) + var(--aug-r-offset, 0px)));
   /* edge augs start with their comma path joiner - corners don't */
   --aug-_RPath: , 100% calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
                   calc(100% - var(--aug-_RWidth)) var(--aug-_ROriginY),
