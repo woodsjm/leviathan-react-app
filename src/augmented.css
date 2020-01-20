@@ -232,7 +232,7 @@
   --aug-_TWidth: var(--aug-t-width, calc(var(--aug-t) * 2));
   --aug-_THeight: var(--aug-t-height, var(--aug-t));
   /*--aug-_TOriginX: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2 + var(--aug-r-offset, 0px));*/
-  --aug-_TOriginX: calc(var(--aug-t-origin-x, calc(var(--aug-_TlJoinRX, 0px) / 2 + var(--aug-_TrJoinLX, 100%) / 2)) + var(--aug-t-offset, 0px));
+  /*--aug-_TOriginX: calc(var(--aug-t-origin-x, calc(var(--aug-_TlJoinRX, 0px) / 2 + var(--aug-_TrJoinLX, 100%) / 2 + var(--aug-t-offset, 0px));*/
   /* edge augs start with their comma path joiner - corners don't */
   --aug-_TPath: , calc(var(--aug-_TOriginX) - var(--aug-_TWidth) / 2) 0px,
                   var(--aug-_TOriginX) var(--aug-_THeight),
