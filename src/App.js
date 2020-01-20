@@ -73,7 +73,7 @@ class App extends React.Component {
 
     logout = async () => {
         try {
-            const logoutResponse = await fetch(`${'https://leviathan-flask-api.herokuapp.com'}/logout`, {
+            const logoutResponse = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
             credentials: 'include'        
             })
 
@@ -87,7 +87,7 @@ class App extends React.Component {
 
     login = async () => {
         try {
-            const loginResponse = await fetch(`${'https://leviathan-flask-api.herokuapp.com'}/login`, {
+            const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify({password: this.state.password, email: this.state.email}),
@@ -158,7 +158,7 @@ class App extends React.Component {
 
     register = async () => {
         try {
-            const registerResponse = await fetch(`${'https://leviathan-flask-api.herokuapp.com'}/register`, {
+            const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
                 credentials: 'include', 
                 body: JSON.stringify({password: this.state.password, email: this.state.email}),
