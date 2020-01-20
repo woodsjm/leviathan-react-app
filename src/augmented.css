@@ -252,7 +252,7 @@
   --aug-r: 15px; /* clip depth */
   --aug-_RWidth: var(--aug-r-width, var(--aug-r));
   --aug-_RHeight: var(--aug-r-height, calc(var(--aug-r) * 2));
-  --aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2 + var(--aug-_BrJoinTY, 100%) / 2) + var(--aug-r-offset, 0px)));
+  /*--aug-_ROriginY: calc(var(--aug-r-origin-y, calc(var(--aug-_TrJoinBY, 0px) / 2)) + (var(--aug-_BrJoinTY, 100%) / 2) + var(--aug-r-offset, 0px));*/
   /* edge augs start with their comma path joiner - corners don't */
   --aug-_RPath: , 100% calc(var(--aug-_ROriginY) - var(--aug-_RHeight) / 2),
                   calc(100% - var(--aug-_RWidth)) var(--aug-_ROriginY),
@@ -272,7 +272,7 @@
   --aug-b: 15px; /* clip depth */
   --aug-_BWidth: var(--aug-b-width, calc(var(--aug-b) * 2));
   --aug-_BHeight: var(--aug-b-height, var(--aug-b));
-  --aug-_BOriginX: calc(var(--aug-b-origin-x, calc(var(--aug-_BlJoinRX, 0px) / 2 + var(--aug-_BrJoinLX, 100%) / 2)) + var(--aug-b-offset, 0px));
+  /*--aug-_BOriginX: calc(var(--aug-b-origin-x, (calc(var(--aug-_BlJoinRX, 0px) / 2 + var(--aug-_BrJoinLX, 100%) / 2) + var(--aug-b-offset, 0px));*/
   /* edge augs start with their comma path joiner - corners don't */
   --aug-_BPath: , calc(var(--aug-_BOriginX) + var(--aug-_BWidth) / 2) 100%,
                   var(--aug-_BOriginX) calc(100% - var(--aug-_BHeight)),
@@ -292,7 +292,7 @@
   --aug-l: 15px; /* clip depth */
   --aug-_LWidth: var(--aug-l-width, var(--aug-l));
   --aug-_LHeight: var(--aug-l-height, calc(var(--aug-l) * 2));
-  --aug-_LOriginY: calc(var(--aug-l-origin-y, calc(var(--aug-_TlJoinBY, 0px) / 2 + var(--aug-_BlJoinTY, 100%) / 2)) + var(--aug-l-offset, 0px));
+  /*--aug-_LOriginY: calc(var(--aug-l-origin-y, calc(var(--aug-_TlJoinBY, 0px) / 2 + var(--aug-_BlJoinTY, 100%) / 2)) + var(--aug-l-offset, 0px));*/
   /* edge augs start with their comma path joiner - corners don't */
   --aug-_LPath: , 0px calc(var(--aug-_LOriginY) + var(--aug-_LHeight) / 2),
                   var(--aug-_LWidth) var(--aug-_LOriginY),
