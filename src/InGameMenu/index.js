@@ -27,9 +27,6 @@ class InGameMenu extends React.Component {
                 <h1 className='menu-title'>MENU</h1>
 
                 <div >
-                    <div className="menu-item" onClick={this.props.logout}>
-                        Log Out
-                    </div>
                     <div className="menu-item" onClick={this.toggleInstructions}>
                         Instructions
                     </div>
@@ -45,3 +42,7 @@ class InGameMenu extends React.Component {
 }
 
 export default InGameMenu
+
+// <div className="menu-item" onClick={this.props.logout}>
+//                         Log Out
+//                     </div>
