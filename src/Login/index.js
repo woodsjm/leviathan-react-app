@@ -8,7 +8,7 @@ const Login = (props) => {
         <div>
             <div style={{height: '30px'}}></div>
 
-            <div className="header" >
+            <div className="header" augmented-ui="b-clip exe">
                 <div style={{height: '20px'}}></div>
                 <h1 className="header-text glitch">THE EXPANSE</h1>
             </div>
