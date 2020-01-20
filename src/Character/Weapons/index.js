@@ -1,5 +1,6 @@
 import React from 'react'
 import '../character.css'
+// import '../../augmented.css'
 import imageStyle from '../image.js'
 
 

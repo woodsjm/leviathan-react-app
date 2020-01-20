@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import 'augmented-ui/augmented.css'
+// import '../augmented.css'
 import './in-game-menu.css'
 import { Dropdown, Menu } from 'semantic-ui-react'
 import Instructions from './instructions.js'

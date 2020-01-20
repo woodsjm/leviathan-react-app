@@ -1,4 +1,5 @@
 import React from 'react'
+// import '../../augmented.css'
 import './equippedWeapon.css'
 
 const EquippedWeapon = (props) => {

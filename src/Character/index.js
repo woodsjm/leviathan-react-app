@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import '../augmented.css'
 import Weapons from './Weapons'
 import Medical from './Medical'
 import Vitals from './Vitals'

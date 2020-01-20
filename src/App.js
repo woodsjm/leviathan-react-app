@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './augmented.css'
 import TopBar from './Header'
 import GameContainer from './GameContainer'
 import Login from './Login'
@@ -15,8 +16,8 @@ class App extends React.Component {
             email: '',
             userId: null,
 
-            loggedIn: true,
-            showLogin: false,
+            loggedIn: false,
+            showLogin: true,
             showRegistration: false,
 
             loginStyling: ["Ship Login", "Login", "Create New Ship"],
