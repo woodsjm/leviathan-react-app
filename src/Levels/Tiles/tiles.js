@@ -15,7 +15,7 @@ const tileImages = {
 
         '?': 'url(/Leviathan-Tiles/space.png',
 
-        'z': 'url(/Leviathan-Tiles/Exit/escape-hatch.png',
+        '!': 'url(/Leviathan-Tiles/Exit/escape-hatch.png',
 
         '*': 'url(/Leviathan-Tiles/Floor/basicFloor.png)',
         '&': 'url(/Leviathan-Tiles/Floor/stripedFloor.png)',
@@ -56,11 +56,18 @@ const tileImages = {
         's': 'url(/Leviathan-Tiles/Walls/SWCorner/SE.png',
         't': 'url(/Leviathan-Tiles/Walls/SWCorner/SW.png',
 
+        // North Facing Wall
+        'u': 'url(/Leviathan-Tiles/Walls/NorthFacing/NW.png',
+        'v': 'url(/Leviathan-Tiles/Walls/NorthFacing/NE.png',
+        'w': 'url(/Leviathan-Tiles/Walls/NorthFacing/SE.png',
+        'x': 'url(/Leviathan-Tiles/Walls/NorthFacing/SW.png',
 
-
-
-
-        
+        // South Facing Wall
+        'y': 'url(/Leviathan-Tiles/Walls/SouthFacing/NW.png',
+        'z': 'url(/Leviathan-Tiles/Walls/SouthFacing/NE.png',
+        '>': 'url(/Leviathan-Tiles/Walls/SouthFacing/SE.png',
+        '<': 'url(/Leviathan-Tiles/Walls/SouthFacing/SW.png'
+     
     }
 
 export default tileImages

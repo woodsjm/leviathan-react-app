@@ -127,7 +127,7 @@ class Game extends React.Component {
 
         if ((s[y][x] === "*") || (s[y][x] === "&") || (s[y][x] === "?")) {
             return true
-        } else if ((s[y][x] === "z") && (this.state.completedLevel === true)) {
+        } else if ((s[y][x] === "!") && (this.state.completedLevel === true)) {
             this.props.exitLevel(this.state)
             return false
         } else {
