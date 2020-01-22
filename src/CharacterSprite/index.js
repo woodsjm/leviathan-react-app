@@ -27,8 +27,7 @@ class CharacterSprite extends React.Component {
     }
 
     componentDidUpdate(previousProps) {
-        if (this.props.level !== previousProps.level) {
-            console.log("Character Sprite didUpdate")
+        if ((this.props.level !== previousProps.level) || (this.props.reset !== previousProps.reset)) {
             let newTopStartPosition = startPos[this.props.level]['top']
             let newLeftStartPosition = startPos[this.props.level]['left']
             this.setState({
@@ -48,7 +47,6 @@ class CharacterSprite extends React.Component {
 
     //=========CHARACTER MOVEMENT=========
     move = (direction, change, tile, x, y) => {
-        console.log("Key press inside this.move()")
         let vector = this.state[direction] + change
         const position = {...this.state.position}
         position[direction] = `${vector}px`
@@ -76,7 +74,6 @@ class CharacterSprite extends React.Component {
             }   
         } else if (arrow === 'ArrowDown') {
             if ((this.props.check(x, y + 1) === true) && (y + 1 < 12)) {
-                console.log("trying to go down")
                 this.move('top', 64, {x: x, y: y + 1}, x, y)  
             }
         } else if (arrow === 'ArrowUp') {

@@ -20,14 +20,6 @@ class Game extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // timeToFight: false,
-            // pickedUpItem: null,
-            // inventoryChanges: false,
-            // currentEnemy: {x: null, y: null},
-            // enemyTiles: [],
-            // currentLevel: this.props.currentLevel,
-            // completedLevel: false
-
             timeToFight: false,
             pickedUpItem: null,
             currentLevel: 0,
@@ -35,16 +27,7 @@ class Game extends React.Component {
             currentEnemy: {x: null, y: null},
             enemyTiles: [],
             enemies: null,
-            completedLevel: false
-
-            // timeToFight: null,
-            // pickedUpItem: null,
-            // inventoryChanges: null,
-            // currentEnemy: {x: null, y: null},
-            // enemyTiles: null,
-            // currentLevel: null,
-            // completedLevel: null, 
-            
+            completedLevel: false 
         }
         this.checkTile = this.checkTile.bind(this)
         this.checkLoot = this.checkLoot.bind(this)
@@ -78,6 +61,9 @@ class Game extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.reset !== this.props.reset) {
+            console.log("prevProps: ", prevProps)
+            console.log("==========")
+            console.log("this.props: ", this.props)
             const currentStructure = plan(this.props.currentLevel)
             let itemToPopulate = 0
             let itemsInLevel = getItemsToPopulate()
@@ -193,9 +179,7 @@ class Game extends React.Component {
     }
 
     generateNarrative = (...args) => {
-
         let narrative = constructBoilerPlateNarrative(...args)
-
         this.setState({
             currentStory: narrative
         })
@@ -214,6 +198,7 @@ class Game extends React.Component {
                                   level={this.state.currentLevel}
                                   check={this.checkTile} 
                                   checkForLoot={this.checkLoot}
+                                  reset={this.props.reset}
                                 />
         }
 
@@ -244,6 +229,7 @@ class Game extends React.Component {
                         timeToFight={this.state.timeToFight}
                         attack={this.fightResult}
                         restartLevel={this.props.restartLevel}
+                        reset={this.props.reset}
                         lives={this.props.lives}
                     />
                 </div>

@@ -12,11 +12,21 @@ const Weapons = (props) => {
             if (props.equippedWeapon == idx) {
                 slotId = 'equipped'
             }
+            // let weaponExists = <img style={imageStyle} src={value.image} />
+            // let weaponDoesNotExist = 
+            let image;  
+            if (value.image) {
+                image = <img style={imageStyle} src={value.image} /> 
+            } else {
+                image = <div style={imageStyle}></div>
+            }
+
             return (
                 <div key={idx} id={slotId} className='slots' onClick={props.equipWeapon.bind(null, idx)} >
-                    <img style={imageStyle} src={value.image} />
+                    {image}
                  </div>
                 )
+
         } else {
             return (
                 <div id={slotId} className='slots'>
@@ -33,3 +43,4 @@ const Weapons = (props) => {
 }
 
 export default Weapons
+

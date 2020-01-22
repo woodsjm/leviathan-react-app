@@ -87,12 +87,21 @@ class Character extends React.Component {
         if (attackResult) {
             let vitals = {...this.state.vitals}
             vitals.health = vitals.health - attackResult
-            this.setState({vitals})
+            if (vitals.health <= 0) {
+                this.die()
+            } else {
+                this.setState({vitals}) 
+            }
         }
     }
 
+    die = () => {
+        this.props.restartLevel()
+        this.resetCharacter()
+        return
+    }
+
     handleMedicalItem = (idx) => {
-        console.log("using item!")
         if (this.state.backpack.medical[idx].name === "MedKit") {
             this.useMedPack(idx)
         }
@@ -106,23 +115,35 @@ class Character extends React.Component {
             let state = this.state
             state.vitals.health = state.vitals.health + state.backpack.medical[idx].heal
             state.backpack.medical[idx] = {[idx]: null}
-            console.log("Here is the new state", state)
             this.setState({state})
-
-            // health = vitals.health + this.state.backpack.medical[idx].heal
-            // medical[idx] = null
-            
-            
-
         }
     }
 
-    render(props) {
-        
+    resetCharacter = () => {
+        this.setState(state => ({
+            equippedWeapon: 0,
+            pickedUpItem: null,
+            backpack: {
+                weapon: [
+                {0: null},
+                {1: null}
+                ],
+                medical: [
+                {0: null},
+                {1: null}
+                ]
+            },
+            vitals: {
+                health: 100,
+                shield: 100
+            },
+            lives: 5
+        }));
+        return
+    }
 
-        if (this.state.vitals.health <= 0) {
-            this.props.restartLevel()
-        }
+    render(props) {
+
         return(
             <div className='cb-container' >
                 <div className='character-box'>
@@ -160,7 +181,7 @@ class Character extends React.Component {
                                       .pauseFor(2000)
                                       .deleteAll()
                                       .callFunction(() => {
-                                        console.log('All strings were deleted');
+                                        return
                                       })
                                       .start()}}
                            />

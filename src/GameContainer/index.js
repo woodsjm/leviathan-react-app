@@ -18,9 +18,10 @@ class GameContainer extends React.Component {
     }
 
     restart = () => {
-        this.setState({
-            restart: !this.state.restart
-        })
+        console.log("Restart being called")
+        this.setState(state => ({
+            restart: !state.restart
+        }));
     }
 
     exitLevel = (childState) => {
@@ -29,6 +30,7 @@ class GameContainer extends React.Component {
                 level: state.level + 1,
                 restart: !state.restart
             }));
+            console.log("Level: ", this.state.level)
             return
         } else {
             return
