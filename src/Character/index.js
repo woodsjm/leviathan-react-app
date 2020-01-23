@@ -14,7 +14,11 @@ const messages = {
         },
     2: {
         first: "You made it to Level Two....",
-        second: "Comeback later for new levels."
+        second: "See if you can pick up the Assault Rifle."
+    },
+    3: {
+        first: "You made it to Level Three...",
+        second: "Come back later for more levels."
     }
 }
 

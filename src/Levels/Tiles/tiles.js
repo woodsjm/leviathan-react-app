@@ -66,7 +66,19 @@ const tileImages = {
         'y': 'url(/Leviathan-Tiles/Walls/SouthFacing/NW.png',
         'z': 'url(/Leviathan-Tiles/Walls/SouthFacing/NE.png',
         '>': 'url(/Leviathan-Tiles/Walls/SouthFacing/SE.png',
-        '<': 'url(/Leviathan-Tiles/Walls/SouthFacing/SW.png'
+        '<': 'url(/Leviathan-Tiles/Walls/SouthFacing/SW.png',
+
+        // Generator
+        'A': 'url(/Leviathan-Tiles/Miscellaneous/Generator/NW.png',
+        'B': 'url(/Leviathan-Tiles/Miscellaneous/Generator/NE.png',
+        'C': 'url(/Leviathan-Tiles/Miscellaneous/Generator/SE.png',
+        'D': 'url(/Leviathan-Tiles/Miscellaneous/Generator/SW.png',
+
+        // Gravity Well
+        'E': 'url(/Leviathan-Tiles/Miscellaneous/Well/NW.png',
+        'F': 'url(/Leviathan-Tiles/Miscellaneous/Well/NE.png',
+        'G': 'url(/Leviathan-Tiles/Miscellaneous/Well/SE.png',
+        'H': 'url(/Leviathan-Tiles/Miscellaneous/Well/SW.png', 
      
     }
 
