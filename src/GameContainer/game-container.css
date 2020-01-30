@@ -7,20 +7,6 @@
     flex-direction: column;
 }
 
-.Game-Container-Top {
-    border: 5px solid #5da1c6;
-    width: 40%;
-    margin: 0 auto;
-    height: 100px;
-
-    opacity: 0.9;
-    background-color: black;
-
-    /*--aug-border-bg: #5da1c6;
-    --aug-border: 5px;
-    --aug-inset: 5px;*/
-}
-
 .Game-Container-Bottom {
     display: flex;
     flex-direction: row;
@@ -28,14 +14,35 @@
     width: 100%;
 }
 
+.Game-Container-Top {
+    background-color: black;
+    border: 5px solid #5da1c6;
+    height: 100px;
+    margin: 0 auto;
+    opacity: 0.9;
+    width: 40%;
+
+    /*--aug-border-bg: #5da1c6;
+    --aug-border: 5px;
+    --aug-inset: 5px;*/
+}
+
+/*
+
+==============
+Glitch Effect
+==============
+
+*/
+
 .glitch {
-  display: inline-block;
   color: #FFD700;
+  display: inline-block;
   font-style: normal;
-  position: relative;
   margin: 0 auto;
-  -webkit-mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
   mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
+  position: relative;
+  -webkit-mask-image: repeating-linear-gradient(black, black 2px, transparent 3px);
 }
 
 @keyframes noise-anim {
@@ -104,17 +111,17 @@
   }
 }
 .glitch::after {
+  animation: noise-anim 5.25s infinite linear alternate-reverse;
+  background: #13242c;
+  color: #00ff9f;
   content: attr(data-text);
   display: inline-block;
-  position: absolute;
   left: 2px;
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
   text-shadow: -1px 0 #fbe806;
   top: 0;
-  color: #00ff9f;
-  background: #13242c;
-  pointer-events: none;
-  overflow: hidden;
-  animation: noise-anim 5.25s infinite linear alternate-reverse;
 }
 
 @keyframes noise-anim-2 {
@@ -182,17 +189,18 @@
     clip-path: inset(76% 0 5% 0);
   }
 }
+
 .glitch::before {
+  animation: noise-anim-2 2s infinite linear alternate-reverse;
+  background: #13242c;
+  color: #fefcfe;
   content: attr(data-text);
   display: inline-block;
-  position: absolute;
   left: -2px;
-  text-shadow: 1px 0 #5da1c6;
-  top: 0;
-  color: #fefcfe;
-  background: #13242c;
   overflow: hidden;
   pointer-events: none;
-  animation: noise-anim-2 2s infinite linear alternate-reverse;
+  position: absolute;
+  text-shadow: 1px 0 #5da1c6;
+  top: 0;
 }
 

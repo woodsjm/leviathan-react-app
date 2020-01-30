@@ -1,23 +1,15 @@
 import React from 'react'
-import './levels.css';
+
 import { plan } from './Structures/plans.js'
-import tileImages from './Tiles/tiles.js'
+import { tileImages, tileTypes } from './Tiles/tiles.js'
 
+import './levels.css';
 
-const tileTypes = {
-    '?': 'loot',
-    '&': 'floor',
-    '*': 'floor',
-    'z': 'exit'
-}
 
 const Level = (props) => {
-
     let levelStructure = props.structure
+    let x = 0 
     let y = 12
-    let x = 0
-
-    console.log("Here props.structure: ", levelStructure) 
 
     const tiles = levelStructure.map(row => {
         return (

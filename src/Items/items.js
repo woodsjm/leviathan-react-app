@@ -27,13 +27,9 @@ const items = [
     ]}
 ]
 
-
 const getItemsToPopulate = () => {
-
     const levelItems = []
-
     for (let i = 0; i < items.length; i++) {
-        
         let max = (items[i][Object.keys(items[i])].length) - 1
         let key = Object.keys(items[i])
         let randNum = Math.floor(Math.random() * ((max - 0) + 1) + 0)

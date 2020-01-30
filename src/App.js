@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
-// import './augmented.css'
-import TopBar from './Header'
+
+import Alert from './Alert'
+import Game from './Game'
 import GameContainer from './GameContainer'
 import Login from './Login'
-import Game from './Game'
-import Alert from './Alert'
+// import TopBar from './Header'
 
+import './App.css';
 
 class App extends React.Component {
     constructor() {
         super()
         this.state = {
             account: {password: '', email: ''},
-            password: '',
             email: '',
+            password: '',
             userId: null,
 
             loggedIn: true,
@@ -28,7 +28,7 @@ class App extends React.Component {
             loginRedirect: 'Register',
             registrationModalMessage: 'It looks like this email address is already registered. Would you like to try login instead?',
             registrationRedirect: 'Login',
-            // Test conditional rendering of required async data
+            // Nee to test conditional rendering of required async data
             loading: true,
             showAlert: false
         }
@@ -40,7 +40,7 @@ class App extends React.Component {
             this.setState({
                 loggedIn: false,
                 showLogin: true,
-                // Test conditional rendering of required async data
+                // Need to test conditional rendering of required async data
                 loading: true
             })
         }
@@ -49,40 +49,84 @@ class App extends React.Component {
     closeAlert = (button) => {
         if (button === 'back') {
             this.setState({
-                showAlert: false,
+                email: '',
                 password: '',
-                email: ''
+                showAlert: false
             })
         } else if (button === 'Login') {
             this.setState({
-                showAlert: false,
-                showRegistration: false,
-                showLogin: true,
+                email: '',
                 password: '',
-                email: ''
+                showAlert: false,
+                showLogin: true,
+                showRegistration: false
             })
         } else if (button === 'Register') {
             this.setState({
-                showAlert: false,
-                showRegistration: true,
-                showLogin: false,
+                email: '',
                 password: '',
-                email: ''
+                showAlert: false,
+                showLogin: false,
+                showRegistration: true
             })
         }
     }
 
-    logout = async () => {
-        try {
-            const logoutResponse = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
-            credentials: 'include'        
+    handleChange = (event) => {
+        event.preventDefault()
+        this.setState({[event.target.name]: event.target.value});
+    }
+
+    handleLink = (event) => {
+        event.preventDefault()
+        if (this.state.showLogin) {
+            this.setState({showLogin: false, showRegistration: true})
+        } else if (!this.state.showLogin) {
+            this.setState({showLogin: true, showRegistration: false})
+        }
+    }
+
+    handleLogOut = (event) => {
+        this.logout()
+        if (event.target.innerHTML === "Log Out") {
+            this.setState({
+                loggedIn: false,
+                showLogin: true,
+                // Need to test conditional rendering of required async data
+                loading: true
+            })
+        }
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+
+        if (this.state.showRegistration === true) {
+            const register = this.register(this.state);
+
+            register.then((data) => {
+              if(data.status.message === 'Success'){
+                console.log("SUCCESSFUL REGISTRATION!")
+              } else {
+                console.log(data)
+              }
+            }).catch((error) => {
+              console.log(error)
             })
 
-            const parsed = await logoutResponse.json()
-            console.log(parsed);
-        } catch (error) {
-            console.error(error)
-            return error
+        } else if (this.state.showRegistration === false) {
+            const login = this.login(this.state);
+
+            login.then((data) => {
+              if(data.status.message === 'Success'){
+                console.log("SUCCESSFUL LOGIN!")
+              } else {
+                console.log(data)
+              }
+
+            }).catch((error) => {
+              console.log(error)
+            })
         }
     }
 
@@ -122,64 +166,17 @@ class App extends React.Component {
         }
     }
 
-    handleChange = (event) => {
-        event.preventDefault()
-        console.log(event.target)
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    handleLogOut = (event) => {
-        this.logout()
-        if (event.target.innerHTML === "Log Out") {
-            this.setState({
-                loggedIn: false,
-                showLogin: true,
-                // Test conditional rendering of required async data
-                loading: true
+    logout = async () => {
+        try {
+            const logoutResponse = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
+            credentials: 'include'        
             })
-        }
-    }
-
-    handleLink = (event) => {
-        event.preventDefault()
-        if (this.state.showLogin) {
-            this.setState({showLogin: false, showRegistration: true})
-        } else if (!this.state.showLogin) {
-            this.setState({showLogin: true, showRegistration: false})
-        }
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault()
-
-        if (this.state.showRegistration === true) {
-
-            const register = this.register(this.state);
-
-            register.then((data) => {
-              console.log(data, "HERE IS THE DATA IN THE REGISTER COMPONENET")
-              if(data.status.message === 'Success'){
-                console.log("SUCCESSFUL REGISTRATION!")
-              } else {
-                console.log(data)
-              }
-            }).catch((err) => {
-              console.log(err)
-            })
-
-        } else if (this.state.showRegistration === false) {
-            const login = this.login(this.state);
-
-            login.then((data) => {
-              console.log(data, "HERE IS THE DATA IN THE LOGIN COMPONENET")
-              if(data.status.message === 'Success'){
-                console.log("SUCCESSFUL REGISTRATION!")
-              } else {
-                console.log(data)
-              }
-            }).catch((err) => {
-              console.log(err)
-            })
+            const parsed = await logoutResponse.json()
+            console.log(parsed)
+    
+        } catch (error) {
+            console.error(error)
+            return error
         }
     }
 
@@ -197,17 +194,18 @@ class App extends React.Component {
             const parsedResponse = await registerResponse.json();
             if(parsedResponse.status.code === 401) {
                 this.showAlert()
-                return 
+                return
             } else if (parsedResponse.status.code === 201) {
                 this.setState(() => {
                     return {
                       ...parsedResponse.data,
                       email: '',
                       password: '',
+                      
                       loading: false,
                       loggedIn: true,
-                      showRegistration: false,
-                      showLogin: false
+                      showLogin: false,
+                      showRegistration: false
                     }
                 })
                 return 
@@ -229,13 +227,11 @@ class App extends React.Component {
         let alert;
         let modalMessage;
         let redirect;
-        // ***********************
   
         // --Non-Alert Variables--
-        let styling;
-        let login;
         let game;
-        // ***********************
+        let login;
+        let styling;
 
         // ----Alert Conditionals----
         if (this.state.showRegistration) {
@@ -248,13 +244,12 @@ class App extends React.Component {
 
         if (this.state.showAlert) {
             alert = <Alert 
-                        open={this.state.showAlert} 
                         closeAlert={this.closeAlert}
                         modalMessage={modalMessage}
+                        open={this.state.showAlert} 
                         redirect={redirect}
                     />
         }
-        // **************************
 
         // --Non-Alert Conditionals--
         if (this.state.showRegistration) {
@@ -265,11 +260,11 @@ class App extends React.Component {
 
         if (this.state.showLogin || this.state.showRegistration) {
             login = <Login 
-                        clickedLink={this.handleLink} 
-                        handleSubmit={this.handleSubmit} 
-                        changeValue={this.handleChange} 
-                        formText={styling}
                         email={this.state.email}
+                        changeValue={this.handleChange} 
+                        clickedLink={this.handleLink} 
+                        formText={styling}
+                        handleSubmit={this.handleSubmit} 
                         password={this.state.password}
                     />
         } 
@@ -277,7 +272,6 @@ class App extends React.Component {
         if (this.state.loggedIn) {
             game = <GameContainer changeUser={this.changeUser} logout={this.handleLogOut}/>
         }
-        // *************************
 
         return (
             <div className="App">
@@ -285,7 +279,7 @@ class App extends React.Component {
                 {login}
                 {game}
             </div>
-        );
+        )
     }   
 }
 

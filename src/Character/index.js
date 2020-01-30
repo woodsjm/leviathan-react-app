@@ -1,26 +1,14 @@
 import React, { Component } from 'react'
-// import '../augmented.css'
-import Weapons from './Weapons'
-import Medical from './Medical'
-import Vitals from './Vitals'
+
 import EquippedWeapon from './EquippedWeapon'
+import Medical from './Medical'
+import messages from '../Levels/Narrative/index.js'
 import Typewriter from 'typewriter-effect'
+import Vitals from './Vitals'
+import Weapons from './Weapons'
+
 import './character.css'
 
-const messages = {
-    1: {
-        first: "Welcome to Level One of Leviathan Wakes...",
-        second: "Move around using the arrow keys."
-        },
-    2: {
-        first: "You made it to Level Two....",
-        second: "See if you can pick up the Assault Rifle."
-    },
-    3: {
-        first: "You made it to Level Three...",
-        second: "Come back later for more levels."
-    }
-}
 
 class Character extends React.Component {
     constructor(props) {
@@ -102,6 +90,7 @@ class Character extends React.Component {
     die = () => {
         this.props.restartLevel()
         this.resetCharacter()
+
         return
     }
 
@@ -143,6 +132,7 @@ class Character extends React.Component {
             },
             lives: 5
         }));
+
         return
     }
 
@@ -171,24 +161,24 @@ class Character extends React.Component {
                 <div className='Story-Box-container'>
                     <div className='Story-Box'>
 
-                            <Typewriter
+                        <Typewriter
                           onInit={(typewriter) => {
 
-                                    typewriter.changeDelay(150).typeString(messages[this.props.level].first)
-                                    .pauseFor(1000)
-                                    .typeString("<br display='block' margin='0px 0px'></br>")
-                                      // .callFunction(() => {
-                                      //   console.log('String typed out!');
-                                      // })
-                                      .pauseFor(2000)
-                                      .typeString(messages[this.props.level].second)
-                                      .pauseFor(2000)
-                                      .deleteAll()
-                                      .callFunction(() => {
-                                        return
-                                      })
-                                      .start()}}
-                           />
+                                typewriter.changeDelay(150).typeString(messages[this.props.level].first)
+                                .pauseFor(1000)
+                                .typeString("<br display='block' margin='0px 0px'></br>")
+                                  // .callFunction(() => {
+                                  //   console.log('String typed out!');
+                                  // })
+                                  .pauseFor(2000)
+                                  .typeString(messages[this.props.level].second)
+                                  .pauseFor(2000)
+                                  .deleteAll()
+                                  .callFunction(() => {
+                                    return
+                                  })
+                                  .start()}}
+                        />
                         
                     </div>
                 </div>
@@ -200,7 +190,3 @@ class Character extends React.Component {
 }
 
 export default Character
-
-// <div>
-// <h3>Lives Remaining: {this.props.lives}</h3>
-// </div>

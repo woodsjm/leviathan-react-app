@@ -1,13 +1,12 @@
-.Main-Container {
-  margin: 30px 0px 30px 30px;
-  display: flex;
-  justify-content: space-between;
-}
-
 .Game-Box {
-  margin: 0px 30px 0px 0px;
   border: 5px solid #5da1c6;
   display: table;
+  margin: 0px 30px 0px 0px;
   position: relative; 
 }
 
+.Main-Container {
+  display: flex;
+  margin: 30px 0px 30px 30px;
+  justify-content: space-between;
+}

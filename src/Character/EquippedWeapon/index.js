@@ -1,12 +1,11 @@
 import React from 'react'
-// import '../../augmented.css'
+
 import './equippedWeapon.css'
 
 const EquippedWeapon = (props) => {
-    let weapon = props.weapons[props.equippedWeapon]
-    console.log(weapon)
-    let damage = 0;
     let accuracy = 0;
+    let damage = 0;
+    let weapon = props.weapons[props.equippedWeapon]
 
     if (weapon.damage !== undefined && weapon.accuracy !== undefined) {
         damage = weapon.damage
@@ -31,7 +30,7 @@ const EquippedWeapon = (props) => {
                 </div>
             </div>
         </div>
-        )
+    )
 } 
 
 export default EquippedWeapon

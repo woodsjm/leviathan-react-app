@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import { plan, startPos } from '../Levels/Structures/plans.js'
+
 import './charactersprite.css'
 
 
@@ -30,7 +32,7 @@ class CharacterSprite extends React.Component {
         if ((this.props.level !== previousProps.level) || (this.props.reset !== previousProps.reset)) {
             let newTopStartPosition = startPos[this.props.level]['top']
             let newLeftStartPosition = startPos[this.props.level]['left']
-            
+
             this.setState({
                 top: newTopStartPosition,
                 left: newLeftStartPosition,

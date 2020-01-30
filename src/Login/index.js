@@ -1,7 +1,7 @@
 import React from 'react'
-import './login.css'
+
 import '../GameContainer/game-container.css'
-// import './augmented.css'
+import './login.css'
 
 const Login = (props) => {
     return(
@@ -12,8 +12,6 @@ const Login = (props) => {
                 <div style={{height: '20px'}}></div>
                 <h1 className="header-text glitch">THE EXPANSE</h1>
             </div>
-
-
 
             <div className="main" >
                 <p className="sign glitch" align="center">{props.formText[0]}</p>
@@ -32,9 +30,7 @@ const Login = (props) => {
                     </div>
                 </form>           
             </div>
-
         </div>
-
     )
 }
 

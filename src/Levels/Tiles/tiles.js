@@ -1,15 +1,9 @@
-/* 
-
-Walls
-
-EastFacing:
-    NE: !
-    NW: @
-    SE: #
-    SW: %
-
-*/
-
+const tileTypes = {
+    '?': 'loot',
+    '&': 'floor',
+    '*': 'floor',
+    'z': 'exit'
+}
 
 const tileImages = {
 
@@ -80,6 +74,6 @@ const tileImages = {
         'G': 'url(/Leviathan-Tiles/Miscellaneous/Well/SE.png',
         'H': 'url(/Leviathan-Tiles/Miscellaneous/Well/SW.png', 
      
-    }
+}
 
-export default tileImages
+export { tileImages, tileTypes }

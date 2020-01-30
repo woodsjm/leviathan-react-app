@@ -1,7 +1,8 @@
 import React from 'react'
-import '../character.css'
+
 import imageStyle from '../image.js'
 
+import '../character.css'
 
 
 const Medical = (props) => {

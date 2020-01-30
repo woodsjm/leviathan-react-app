@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
+
 import { Button, Modal,  } from 'semantic-ui-react'
 
 const Alert = (props) => {
-  // let modalMessage;
-  // let redirect;
-  
-  // if (props.register) {
-  //   modalMessage = 'It looks like this email address is already registered. Would you like to try login instead?'
-  //   redirect = 'Login'
-  // } else if (props.login) {
-  //   modalMessage = 'That is not a valid email address or password. Would you like to register instead?'
-  //   redirect = 'Register'
-  // }
-
   return (
     <div>
       <Modal size='mini' open={props.open} >

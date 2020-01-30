@@ -1,20 +1,21 @@
 import React from 'react'
-import '../character.css'
-// import '../../augmented.css'
+
 import imageStyle from '../image.js'
+
+import '../character.css'
 
 
 const Weapons = (props) => {
     let defaultSlotId = 'not-equipped'
     const gunList = props.weapons.map((value, idx) => {
+
         let slotId = 'not-equipped'
         if (value !== null) {
-            if (props.equippedWeapon == idx) {
+            if (props.equippedWeapon === idx) {
                 slotId = 'equipped'
             }
-            // let weaponExists = <img style={imageStyle} src={value.image} />
-            // let weaponDoesNotExist = 
-            let image;  
+            
+            let image; 
             if (value.image) {
                 image = <img style={imageStyle} src={value.image} /> 
             } else {
@@ -43,4 +44,3 @@ const Weapons = (props) => {
 }
 
 export default Weapons
-

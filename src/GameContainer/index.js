@@ -1,27 +1,21 @@
 import React, { Component } from 'react'
-import InGameMenu from '../InGameMenu'
-// import '../augmented.css'
-import Game from '../Game'
-import './game-container.css'
+
 import { enemyStart } from '../Levels/Structures/plans.js'
+import Game from '../Game'
+import InGameMenu from '../InGameMenu'
+
+import './game-container.css'
 
 
 class GameContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            restart: false,
-            lives: 10,
             level: 1,
+            lives: 10,
             gameShowing: true,
+            restart: false
         }
-    }
-
-    restart = () => {
-        console.log("Restart being called")
-        this.setState(state => ({
-            restart: !state.restart
-        }));
     }
 
     exitLevel = (childState) => {
@@ -30,22 +24,34 @@ class GameContainer extends React.Component {
                 level: state.level + 1,
                 restart: !state.restart
             }));
-            console.log("Level: ", this.state.level)
             return
+
         } else {
             return
         }
     }
 
+    restart = () => {
+        this.setState(state => ({
+            restart: !state.restart
+        }));
+    }
+
     render() {
         let game;
+
         if (this.state.gameShowing === true) {
-            game = <Game reset={this.state.restart} restartLevel={this.restart} currentLevel={this.state.level} lives={this.state.lives} exitLevel={this.exitLevel}/>
+            game = <Game 
+                        currentLevel={this.state.level} 
+                        exitLevel={this.exitLevel}
+                        lives={this.state.lives} 
+                        reset={this.state.restart} 
+                        restartLevel={this.restart} 
+                    />
         }
 
         return (
             <div className='Game-Container' >
-
                 <div className='Game-Container-Top' >
                     <h1 className="app-name glitch"> The Expanse</h1>
                 </div>
@@ -54,7 +60,7 @@ class GameContainer extends React.Component {
                     {game}
                 </div>
             </div>
-            )
+        )
     }
 }
 

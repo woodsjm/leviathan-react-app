@@ -1,4 +1,3 @@
-
 const plans = {
     1: `
 **********mn
@@ -73,4 +72,4 @@ const plan = (level) => {
     return plan.trim().split('\n').map(l => [...l]);
 }
 
-export { plan, startPos, enemyStart }
+export { enemyStart, plan, startPos }

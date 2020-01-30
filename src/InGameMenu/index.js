@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-// import '../augmented.css'
-import './in-game-menu.css'
-import { Dropdown, Menu } from 'semantic-ui-react'
+
 import Instructions from './instructions.js'
+
+import './in-game-menu.css'
 
 class InGameMenu extends React.Component {
     constructor(props) {
@@ -42,7 +42,3 @@ class InGameMenu extends React.Component {
 }
 
 export default InGameMenu
-
-// <div className="menu-item" onClick={this.props.logout}>
-//                         Log Out
-//                     </div>
