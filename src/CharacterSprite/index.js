@@ -30,6 +30,7 @@ class CharacterSprite extends React.Component {
         if ((this.props.level !== previousProps.level) || (this.props.reset !== previousProps.reset)) {
             let newTopStartPosition = startPos[this.props.level]['top']
             let newLeftStartPosition = startPos[this.props.level]['left']
+            
             this.setState({
                 top: newTopStartPosition,
                 left: newLeftStartPosition,
@@ -57,6 +58,7 @@ class CharacterSprite extends React.Component {
         })
         
         this.props.checkForLoot(this.state.tile.x, this.state.tile.y)
+
         return
     }
 
@@ -85,6 +87,7 @@ class CharacterSprite extends React.Component {
 
     render() {
         let sprite;
+
         if (this.state.position !== null && this.state.tile !== null) {
             sprite = <img 
                   className='sprite' id='player' 
@@ -93,11 +96,12 @@ class CharacterSprite extends React.Component {
                   style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile000.png'} 
                   />
         }
+
         return(
             <div >
                 {sprite}
             </div>
-            )
+        )
     }
 }
 

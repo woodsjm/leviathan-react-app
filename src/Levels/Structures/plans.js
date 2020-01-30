@@ -73,11 +73,4 @@ const plan = (level) => {
     return plan.trim().split('\n').map(l => [...l]);
 }
 
-
-// const grabEnemies = (level) => {
-//     const enemiesForTheLevel = JSON.parse(JSON.stringify(enemyStart[level]))
-//     console.log(enemiesForTheLevel)
-//     return enemiesForTheLevel
-// }
-
 export { plan, startPos, enemyStart }
