@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Instructions from './instructions.js'
 
+import '../augmented.css'
 import './in-game-menu.css'
 
 class InGameMenu extends React.Component {
@@ -31,8 +32,8 @@ class InGameMenu extends React.Component {
                         Instructions
                     </div>
                 </div>
-                <div className='instructions-container'>
-                    <div className='instructions' >
+                <div className='instructions-container' >
+                    <div className='instructions' augmented-ui="t-clip b-clip exe">
                         {instructions}
                     </div>
                 </div>

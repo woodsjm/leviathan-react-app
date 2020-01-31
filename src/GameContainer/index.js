@@ -4,6 +4,7 @@ import { enemyStart } from '../Levels/Structures/plans.js'
 import Game from '../Game'
 import InGameMenu from '../InGameMenu'
 
+import '../augmented.css'
 import './game-container.css'
 
 
@@ -52,8 +53,8 @@ class GameContainer extends React.Component {
 
         return (
             <div className='Game-Container' >
-                <div className='Game-Container-Top' >
-                    <h1 className="app-name glitch"> The Expanse</h1>
+                <div className='Game-Container-Top' augmented-ui="br-clip bl-clip exe">
+                    <h1 className="app-name glitch" > The Expanse</h1>
                 </div>
                 <div className='Game-Container-Bottom' >
                     <InGameMenu changeUser={this.props.changeUser} logout={this.props.logout}/>
