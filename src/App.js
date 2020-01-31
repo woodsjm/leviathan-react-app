@@ -160,6 +160,8 @@ class App extends React.Component {
                 return
             }
 
+            console.log("Parsed Response: ", parsedResponse)
+
         } catch (error) {
             console.error(error)
             return error
