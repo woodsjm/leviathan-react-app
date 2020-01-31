@@ -28,7 +28,7 @@
         {
           "calc": false
         }
-      ],
+    ]
   },
   "browserslist": {
     "production": [
