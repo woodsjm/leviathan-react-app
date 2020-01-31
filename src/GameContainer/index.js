@@ -53,7 +53,7 @@ class GameContainer extends React.Component {
 
         return (
             <div className='Game-Container' >
-                <div className='Game-Container-Top' augmented-ui="br-clip bl-clip exe">
+                <div className='Game-Container-Top' >
                     <h1 className="app-name glitch" > The Expanse</h1>
                 </div>
                 <div className='Game-Container-Bottom' >
@@ -66,3 +66,5 @@ class GameContainer extends React.Component {
 }
 
 export default GameContainer
+
+// <div className='Game-Container-Top' augmented-ui="br-clip bl-clip exe">
