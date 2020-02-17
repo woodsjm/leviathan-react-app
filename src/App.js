@@ -17,8 +17,8 @@ class App extends React.Component {
             password: '',
             userId: null,
 
-            loggedIn: true,
-            showLogin: false,
+            loggedIn: false,
+            showLogin: true,
             showRegistration: false,
 
             loginStyling: ["Ship Login", "Login", "Create New Ship"],
