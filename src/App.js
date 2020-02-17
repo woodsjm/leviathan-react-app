@@ -102,7 +102,7 @@ class App extends React.Component {
         event.preventDefault()
 
         if (this.state.showRegistration === true) {
-            const register = this.register({'email': this.state.email, 'password': this.state.password);
+            const register = this.register({'email': this.state.email, 'password': this.state.password});
 
             register.then((data) => {
               if(data.status.message === 'Success'){
