@@ -102,7 +102,7 @@ class App extends React.Component {
         event.preventDefault()
 
         if (this.state.showRegistration === true) {
-            const register = this.register(this.state);
+            const register = this.register({'email': this.state.email, 'password': this.state.password);
 
             register.then((data) => {
               if(data.status.message === 'Success'){
@@ -182,6 +182,7 @@ class App extends React.Component {
     }
 
     register = async (data) => {
+
         try {
             const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
