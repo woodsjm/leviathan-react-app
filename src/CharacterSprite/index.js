@@ -11,91 +11,106 @@ class CharacterSprite extends React.Component {
         this.state = {
             top: null,
             left: null,
-            tile: null,
-            position: null
+            currentTileX: null,
+            currentTileY: null
         }
-        this.handleArrowKeys = this.handleArrowKeys.bind(this)
     }
 
-    componentDidMount() {
-        document.addEventListener("keydown", this.handleArrowKeys, false)
-        
-        this.setState({
-            top: startPos[this.props.level]['top'],
-            left: startPos[this.props.level]['left'],
-            tile: {x: 0, y: 0},
-            position: {top: `${startPos[this.props.level]['top']}px`, left: `${startPos[this.props.level]['left']}px`}
-        })
+    componentDidMount(props) {
+        document.addEventListener("keydown", this.handleInput, false)
+        this.setUpCharacterSprite()
     }
 
     componentDidUpdate(previousProps) {
-        if ((this.props.level !== previousProps.level) || (this.props.reset !== previousProps.reset)) {
-            let newTopStartPosition = startPos[this.props.level]['top']
-            let newLeftStartPosition = startPos[this.props.level]['left']
-
-            this.setState({
-                top: newTopStartPosition,
-                left: newLeftStartPosition,
-                tile: {x: 0, y: 0},
-                position: {top: `${startPos[this.props.level]['top']}px`, left: `${startPos[this.props.level]['left']}px`}
-            })
+        const level = this.props.level
+        const reset = this.props.reset
+        if ((level !== previousProps.level) || (reset !== previousProps.reset)) {
+            this.setUpCharacterSprite()  
         }
     }
 
-    handleArrowKeys = (event) => {
-        if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-            this.directCharacter(event.key)
+    // ==============
+    // Event Handlers
+    // ==============
+
+    handleInput = (event) => {
+        if ( 37 <= event.keyCode <= 40) {
+            this.controlCharacter(event.key)
         } 
     }
 
-    //=========CHARACTER MOVEMENT=========
-    move = (direction, change, tile, x, y) => {
-        let vector = this.state[direction] + change
-        const position = {...this.state.position}
-        position[direction] = `${vector}px`
+    // =============
+    // Sprite Specific Methods
+    // =============
+
+    controlCharacter = async (arrow) => {
+        try{
+            await this.move(this.directCharacter(arrow))
+        } catch(error) {
+            console.log(error)
+        } finally {
+            this.props.checkForLoot(this.state.currentTileX, this.state.currentTileY)
+        }
+    }
+
+    directCharacter = (arrow) => {
+        const x = this.state.currentTileX
+        const y = this.state.currentTileY
+
+        switch (arrow) {
+            case 'ArrowRight':
+                if (this.props.checkTile(x + 1, y) && (x + 1 < 12)) {
+                    return ['left', 64, x + 1]
+                }
+            case 'ArrowLeft':
+                if (this.props.checkTile(x - 1, y) && (x - 1 >= 0)) {
+                    return ['left', -64, x - 1]
+                }
+
+            case 'ArrowDown':
+                if (this.props.checkTile(x, y + 1) && (y + 1 < 12)) {
+                    return ['top', 64, y + 1]
+                }
+
+            case 'ArrowUp':
+                if (this.props.checkTile(x, y - 1) && (y - 1 >= 0)) {
+                    return ['top', -64, y - 1]
+                }
+        }
+    }
+
+    move = ([direction, change, newCoordinate]) => {
+        let axis;
+        direction === 'left' ? axis = 'currentTileX' : axis = 'currentTileY'
         this.setState({
-            [direction]: vector,
-            tile: tile,
-            position: {...position}
+            [direction]: this.state[direction] + change,
+            [axis]: newCoordinate,
         })
-        
-        this.props.checkForLoot(this.state.tile.x, this.state.tile.y)
+        return
+    }
+
+    setUpCharacterSprite = () => {
+        const level = this.props.level
+        this.setState({
+            top: startPos[level]['top'],
+            left: startPos[level]['left'],
+            currentTileX: 0,
+            currentTileY: 0
+        })
 
         return
     }
 
-    directCharacter = (arrow) => {
-        const x = this.state.tile.x
-        const y = this.state.tile.y
-        
-        if (arrow === 'ArrowRight') {
-            if ((this.props.check(x + 1, y) === true) && (x + 1 < 12)) {
-                this.move('left', 64, {x: x + 1, y: y}, x, y)
-            }
-        } else if (arrow === 'ArrowLeft') {
-            if ((this.props.check(x - 1, y) === true) && (x - 1 >= 0)) {
-                this.move('left', -64, {x: x - 1, y: y}, x, y) 
-            }   
-        } else if (arrow === 'ArrowDown') {
-            if ((this.props.check(x, y + 1) === true) && (y + 1 < 12)) {
-                this.move('top', 64, {x: x, y: y + 1}, x, y)  
-            }
-        } else if (arrow === 'ArrowUp') {
-            if ((this.props.check(x, y - 1) === true) && (y - 1 >= 0)) {
-                this.move('top', -64, {x: x, y: y - 1}, x, y) 
-            }
-        }
-    }
-
     render() {
         let sprite;
+        let s = this.state
 
-        if (this.state.position !== null && this.state.tile !== null) {
+        if (s.top !== null && s.left !== null) {
             sprite = <img 
                   className='sprite' id='player' 
-                  data-x={this.state.tile.x}
-                  data-y={this.state.tile.y}
-                  style={{top: this.state.position.top, left: this.state.position.left}} src={'/Leviathan-Sprites/tile000.png'} 
+                  data-x={this.state.currentTileX}
+                  data-y={this.state.currentTileY}
+                  style={{top: `${this.state.top}px`, left: `${this.state.left}px`}} src={'/Leviathan-Sprites/tile000.png'} 
                   />
         }
 

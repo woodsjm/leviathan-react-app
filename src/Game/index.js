@@ -165,7 +165,7 @@ class Game extends React.Component {
 
         if (this.state.currentLevel) {
             characterSprite = <CharacterSprite 
-                                  check={this.checkTile} 
+                                  checkTile={this.checkTile} 
                                   checkForLoot={this.checkLoot}
                                   level={this.state.currentLevel}
                                   reset={this.props.reset}
