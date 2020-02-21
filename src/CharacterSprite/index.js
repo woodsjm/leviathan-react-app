@@ -103,6 +103,7 @@ class CharacterSprite extends React.Component {
 
     render() {
         let sprite;
+        let test;
         let s = this.state
 
         if (s.top !== null && s.left !== null) {
@@ -110,13 +111,15 @@ class CharacterSprite extends React.Component {
                   className='sprite' id='player' 
                   data-x={this.state.currentTileX}
                   data-y={this.state.currentTileY}
-                  style={{top: `${this.state.top}px`, left: `${this.state.left}px`}} src={'/Leviathan-Sprites/tile000.png'} 
-                  />
+                  style={{top: `${this.state.top}px`, left: `${this.state.left}px`}} 
+                  src={'/Leviathan-Sprites/tile000.png'} 
+                  /> 
         }
 
         return(
             <div >
                 {sprite}
+                {test}
             </div>
         )
     }
