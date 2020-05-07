@@ -18,7 +18,7 @@ class App extends React.Component {
             userId: null,
 
             loggedIn: false,
-            showLogin: false,
+            showLogin: true,
             showRegistration: false,
 
             loginStyling: ["Ship Login", "Login", "Create New Ship"],
