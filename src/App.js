@@ -17,7 +17,7 @@ class App extends React.Component {
             password: '',
             userId: null,
 
-            loggedIn: true,
+            loggedIn: false,
             showLogin: false,
             showRegistration: false,
 
